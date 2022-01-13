@@ -1,0 +1,9 @@
+name: Minelife
+version: '${project.version}'
+main: cz.minelife.Main
+api-version: 1.18
+
+commands:
+  setupCmd:
+    description: Nastavení serveru
+    usage: /setupCmd
