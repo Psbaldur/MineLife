@@ -13,8 +13,6 @@ import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
 import org.bukkit.scoreboard.Team;
 
-import static org.bukkit.ChatColor.DARK_GREEN;
-
 public class Players implements Listener {
     private JavaPlugin plugin;
     private ScoreboardManager manager = Bukkit.getScoreboardManager();
@@ -48,15 +46,17 @@ public class Players implements Listener {
         twoLives.setPrefix(ChatColor.RED + "[2] ");
         threeLives.setPrefix(ChatColor.YELLOW + "[3] ");
         fourLives.setPrefix(ChatColor.GREEN + "[4] ");
-        fiveLives.setPrefix(DARK_GREEN + "[5] ");
-        sixLives.setPrefix(DARK_GREEN + "[6] ");
+        fiveLives.setPrefix(ChatColor.DARK_GREEN + "[5] ");
+        sixLives.setPrefix(ChatColor.DARK_GREEN + "[6] ");
 
         oneLive.setColor(ChatColor.DARK_RED);
         twoLives.setColor(ChatColor.RED);
         threeLives.setColor(ChatColor.YELLOW);
         fourLives.setColor(ChatColor.GREEN);
-        fiveLives.setColor(DARK_GREEN);
+        fiveLives.setColor(ChatColor.DARK_GREEN);
         sixLives.setColor(ChatColor.DARK_GREEN);
+
+        oneLive.setOption();
 
         this.addPlayersToTeams();
     }
@@ -98,6 +98,19 @@ public class Players implements Listener {
 
     @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent e) {
-
+        switch(scoreboard.getEntryTeam(e.getPlayer().getDisplayName()).getName()) {
+            case "oneLive":
+                e.setFormat(ChatColor.DARK_RED + "<" + e.getPlayer().getDisplayName() + "> " + ChatColor.WHITE + e.getMessage());
+            case "twoLives":
+                e.setFormat(ChatColor.RED + "<" + e.getPlayer().getDisplayName() + "> " + ChatColor.WHITE + e.getMessage());
+            case "threeLives":
+                e.setFormat(ChatColor.YELLOW + "<" + e.getPlayer().getDisplayName() + "> " + ChatColor.WHITE + e.getMessage());
+            case "fourLives":
+                e.setFormat(ChatColor.GREEN + "<" + e.getPlayer().getDisplayName() + "> " + ChatColor.WHITE + e.getMessage());
+            case "fiveLives":
+                e.setFormat(ChatColor.DARK_GREEN + "<" + e.getPlayer().getDisplayName() + "> " + ChatColor.WHITE + e.getMessage());
+            case "sixLives":
+                e.setFormat(ChatColor.DARK_GREEN + "<" + e.getPlayer().getDisplayName() + "> " + ChatColor.WHITE + e.getMessage());
+        }
     }
 }
