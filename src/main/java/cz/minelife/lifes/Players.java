@@ -13,6 +13,8 @@ import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
 import org.bukkit.scoreboard.Team;
 
+import static org.bukkit.ChatColor.DARK_GREEN;
+
 public class Players implements Listener {
     private JavaPlugin plugin;
     private ScoreboardManager manager = Bukkit.getScoreboardManager();
@@ -46,14 +48,14 @@ public class Players implements Listener {
         twoLives.setPrefix(ChatColor.RED + "[2] ");
         threeLives.setPrefix(ChatColor.YELLOW + "[3] ");
         fourLives.setPrefix(ChatColor.GREEN + "[4] ");
-        fiveLives.setPrefix(ChatColor.DARK_GREEN + "[5] ");
-        sixLives.setPrefix(ChatColor.DARK_GREEN + "[6] ");
+        fiveLives.setPrefix(DARK_GREEN + "[5] ");
+        sixLives.setPrefix(DARK_GREEN + "[6] ");
 
         oneLive.setColor(ChatColor.DARK_RED);
         twoLives.setColor(ChatColor.RED);
         threeLives.setColor(ChatColor.YELLOW);
         fourLives.setColor(ChatColor.GREEN);
-        fiveLives.setColor(ChatColor.DARK_GREEN);
+        fiveLives.setColor(DARK_GREEN);
         sixLives.setColor(ChatColor.DARK_GREEN);
 
         this.addPlayersToTeams();
@@ -62,6 +64,13 @@ public class Players implements Listener {
     public void addPlayersToTeams() {
         for (Player p: Bukkit.getOnlinePlayers()) {
             int lives = yaml.getPlayerLives(p);
+
+            try {
+                scoreboard.getEntryTeam(p.getDisplayName()).removeEntry(p.getDisplayName());
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+
             switch (lives) {
                 case 1:
                     oneLive.addEntry(p.getDisplayName());
@@ -89,5 +98,6 @@ public class Players implements Listener {
 
     @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent e) {
+
     }
 }
