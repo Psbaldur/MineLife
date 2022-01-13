@@ -30,7 +30,7 @@ public class Players implements Listener {
         this.yaml = new Yaml(this.plugin);
     }
 
-    public void setup() {
+    public Players setup() {
         for (Team t: scoreboard.getTeams()) {
             t.unregister();
         }
@@ -56,19 +56,12 @@ public class Players implements Listener {
         fiveLives.setColor(ChatColor.DARK_GREEN);
         sixLives.setColor(ChatColor.DARK_GREEN);
 
-        this.addPlayersToTeams();
+        return this;
     }
 
     public void addPlayersToTeams() {
         for (Player p: Bukkit.getOnlinePlayers()) {
             int lives = yaml.getPlayerLives(p);
-
-            try {
-                scoreboard.getEntryTeam(p.getDisplayName()).removeEntry(p.getDisplayName());
-            } catch(Exception e) {
-                e.printStackTrace();
-            }
-
             switch (lives) {
                 case 1:
                     oneLive.addEntry(p.getDisplayName());
