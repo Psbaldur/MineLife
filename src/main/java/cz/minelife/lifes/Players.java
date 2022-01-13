@@ -56,8 +56,6 @@ public class Players implements Listener {
         fiveLives.setColor(ChatColor.DARK_GREEN);
         sixLives.setColor(ChatColor.DARK_GREEN);
 
-        oneLive.setOption();
-
         this.addPlayersToTeams();
     }
 
