@@ -59,7 +59,7 @@ public class Players implements Listener {
         return this;
     }
 
-    /*public void addPlayersToTeams() {
+    public void addPlayersToTeams() {
         for (Player p: Bukkit.getOnlinePlayers()) {
             int lives = yaml.getPlayerLives(p);
             switch (lives) {
@@ -77,7 +77,7 @@ public class Players implements Listener {
                     sixLives.addEntry(p.getDisplayName());
             }
         }
-    }*/
+    }
 
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent e) {
