@@ -85,9 +85,6 @@ public class Players implements Listener {
         Team playerTeam = p.getScoreboard().getEntryTeam(p.getDisplayName());
 
         playerTeam.removeEntry(p.getDisplayName());
-
-        player.... ss s
-                sdhauhdia
     }
 
     @EventHandler
