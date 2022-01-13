@@ -13,6 +13,8 @@ import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
 import org.bukkit.scoreboard.Team;
 
+import java.util.Objects;
+
 public class Players implements Listener {
     private JavaPlugin plugin;
     private ScoreboardManager manager = Bukkit.getScoreboardManager();
@@ -84,7 +86,7 @@ public class Players implements Listener {
         Player p = e.getEntity();
         Team playerTeam = p.getScoreboard().getEntryTeam(p.getDisplayName());
 
-        playerTeam.removeEntry(p.getDisplayName());
+        Objects.requireNonNull(playerTeam).removeEntry(p.getDisplayName());
     }
 
     @EventHandler
