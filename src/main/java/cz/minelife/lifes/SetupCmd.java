@@ -47,7 +47,7 @@ public class SetupCmd implements CommandExecutor {
                                     yaml.setPlayerLives(p, random);
                                 }
                                 this.cancel();
-                                new Players(plugin).setup().addPlayersToTeams();
+                                new Players(plugin).setup();
                             }
                             i++;
                         }
