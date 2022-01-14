@@ -7,6 +7,7 @@ import java.util.Random;
 
 public class Utils {
     private static final Random RANDOM = new Random();
+
     public static void setTitle(Player player, int text) {
         switch (text) {
             case 2:
@@ -26,6 +27,11 @@ public class Utils {
                 break;
         }
     }
+
+    public static void setTitle(Player player, String text) {
+        player.sendTitle(ChatColor.translateAlternateColorCodes('&', "&c" + text), "", 1, 20*5, 1);
+    }
+
     public static int randomInt() {
         return RANDOM.nextInt(6 - 2) + 2;
     }
