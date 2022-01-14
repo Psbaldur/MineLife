@@ -101,8 +101,6 @@ public class Players implements Listener {
         assert playerTeam != null;
         playerTeam.removeEntry(p.getDisplayName());
 
-        yaml.setPlayerLives(p, playerLives - 1);
-
         switch (playerLives) {
             case 0:
                 p.setGameMode(GameMode.SPECTATOR);
@@ -128,8 +126,8 @@ public class Players implements Listener {
                 fiveLives.addEntry(p.getDisplayName());
                 p.sendMessage(ChatColor.RED + "Právě jsi zemřel a ztratil život. Už ti zbývají pouze 5 životů. Buď opatrný!");
                 break;
-
         }
+        yaml.setPlayerLives(p, playerLives - 1);
     }
 
     @EventHandler
