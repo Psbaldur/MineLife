@@ -9,6 +9,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
@@ -128,5 +130,14 @@ public class Players implements Listener {
             case "sixLives":
                 e.setFormat(ChatColor.DARK_GREEN + "<" + e.getPlayer().getDisplayName() + "> " + ChatColor.WHITE + ChatColor.translateAlternateColorCodes('&', e.getMessage()));
         }
+    }
+
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent e) {
+        Player p = e.getPlayer();
+        int playerLives = yaml.getPlayerLives(p);
+
+        if (playerLives == 0)
+            p.setGameMode(GameMode.SPECTATOR);
     }
 }
