@@ -44,16 +44,9 @@ public class Players implements Listener {
         fiveLives = scoreboard.registerNewTeam("fiveLives");
         sixLives = scoreboard.registerNewTeam("sixLives");
 
-        oneLive.setPrefix(ChatColor.DARK_RED + "[1] ");
-        twoLives.setPrefix(ChatColor.RED + "[2] ");
-        threeLives.setPrefix(ChatColor.YELLOW + "[3] ");
-        fourLives.setPrefix(ChatColor.GREEN + "[4] ");
-        fiveLives.setPrefix(ChatColor.DARK_GREEN + "[5] ");
-        sixLives.setPrefix(ChatColor.DARK_GREEN + "[6] ");
-
         oneLive.setColor(ChatColor.DARK_RED);
         twoLives.setColor(ChatColor.RED);
-        threeLives.setColor(ChatColor.YELLOW);
+        threeLives.setColor(ChatColor.GOLD);
         fourLives.setColor(ChatColor.GREEN);
         fiveLives.setColor(ChatColor.DARK_GREEN);
         sixLives.setColor(ChatColor.DARK_GREEN);
@@ -64,6 +57,10 @@ public class Players implements Listener {
     public void addPlayersToTeams() {
         for (Player p: Bukkit.getOnlinePlayers()) {
             int lives = yaml.getPlayerLives(p);
+            Team playerTeam = p.getScoreboard().getEntryTeam(p.getDisplayName());
+
+            Objects.requireNonNull(playerTeam).removeEntry(p.getDisplayName());
+
             switch (lives) {
                 case 1:
                     oneLive.addEntry(p.getDisplayName());
@@ -97,7 +94,7 @@ public class Players implements Listener {
             case "twoLives":
                 e.setFormat(ChatColor.RED + "<" + e.getPlayer().getDisplayName() + "> " + ChatColor.WHITE + ChatColor.translateAlternateColorCodes('&', e.getMessage()));
             case "threeLives":
-                e.setFormat(ChatColor.YELLOW + "<" + e.getPlayer().getDisplayName() + "> " + ChatColor.WHITE + ChatColor.translateAlternateColorCodes('&', e.getMessage()));
+                e.setFormat(ChatColor.GOLD + "<" + e.getPlayer().getDisplayName() + "> " + ChatColor.WHITE + ChatColor.translateAlternateColorCodes('&', e.getMessage()));
             case "fourLives":
                 e.setFormat(ChatColor.GREEN + "<" + e.getPlayer().getDisplayName() + "> " + ChatColor.WHITE + ChatColor.translateAlternateColorCodes('&', e.getMessage()));
             case "fiveLives":
