@@ -69,16 +69,22 @@ public class Players implements Listener {
             switch (lives) {
                 case 1:
                     oneLive.addEntry(p.getDisplayName());
+                    break;
                 case 2:
                     twoLives.addEntry(p.getDisplayName());
+                    break;
                 case 3:
                     threeLives.addEntry(p.getDisplayName());
+                    break;
                 case 4:
                     fourLives.addEntry(p.getDisplayName());
+                    break;
                 case 5:
                     fiveLives.addEntry(p.getDisplayName());
+                    break;
                 case 6:
                     sixLives.addEntry(p.getDisplayName());
+                    break;
             }
         }
     }
@@ -87,34 +93,39 @@ public class Players implements Listener {
     public void onPlayerDeath(PlayerDeathEvent e) {
         Player p = e.getEntity();
         Team playerTeam = p.getScoreboard().getEntryTeam(p.getDisplayName());
-
-        if (playerTeam == null)
-            return;
-
         int playerLives = yaml.getPlayerLives(p);
+
+        assert playerTeam != null;
         playerTeam.removeEntry(p.getDisplayName());
 
         yaml.setPlayerLives(p, playerLives - 1);
 
-        switch (playerLives - 1) {
+        switch (playerLives) {
             case 0:
-                p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c&lTy už jsi stihl vyplýtvat životy? No nic, zde máš spectatora."));
                 p.setGameMode(GameMode.SPECTATOR);
+                p.sendMessage(ChatColor.RED + "Právě jsi zemřel. Doufám, že už tě nikdo neoživí...");
+                break;
             case 1:
-                p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c&lNo a to čeho jsi se obával je zde, odteď je tvým jediným cílem zabít ostatní hráče."));
                 oneLive.addEntry(p.getDisplayName());
+                p.sendMessage(ChatColor.RED + "Ou, škoda myslel jsem že máš na víc. No což, tvým novým úkolem je povraždit všechny.");
+                break;
             case 2:
-                p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c&lZemřel jsi a ztratil jsi život. Tvůj aktuální počet životů je dva. Měj se na pozoru!"));
                 twoLives.addEntry(p.getDisplayName());
+                p.sendMessage(ChatColor.RED + "Právě jsi zemřel a ztratil život. Už ti zbývají pouze 2 životy. Buď opatrný!");
+                break;
             case 3:
-                p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c&lZemřel jsi a ztratil jsi život. Tvůj aktuální počet životů je tři. Měj se na pozoru!"));
                 threeLives.addEntry(p.getDisplayName());
+                p.sendMessage(ChatColor.RED + "Právě jsi zemřel a ztratil život. Už ti zbývají pouze 3 životy. Buď opatrný!");
+                break;
             case 4:
-                p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c&lZemřel jsi a ztratil jsi život. Tvůj aktuální počet životů je čtyři. Měj se na pozoru!"));
                 fourLives.addEntry(p.getDisplayName());
+                p.sendMessage(ChatColor.RED + "Právě jsi zemřel a ztratil život. Už ti zbývají pouze 4 životy. Buď opatrný!");
+                break;
             case 5:
-                p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c&lZemřel jsi a ztratil jsi život. Tvůj aktuální počet životů je pět. Měj se na pozoru!"));
                 fiveLives.addEntry(p.getDisplayName());
+                p.sendMessage(ChatColor.RED + "Právě jsi zemřel a ztratil život. Už ti zbývají pouze 5 životů. Buď opatrný!");
+                break;
+
         }
     }
 
@@ -125,16 +136,22 @@ public class Players implements Listener {
             switch(playerTeam.getName()) {
                 case "oneLive":
                     e.setFormat(ChatColor.DARK_RED + "<" + e.getPlayer().getDisplayName() + "> " + ChatColor.WHITE + ChatColor.translateAlternateColorCodes('&', e.getMessage()));
+                    break;
                 case "twoLives":
                     e.setFormat(ChatColor.RED + "<" + e.getPlayer().getDisplayName() + "> " + ChatColor.WHITE + ChatColor.translateAlternateColorCodes('&', e.getMessage()));
+                    break;
                 case "threeLives":
                     e.setFormat(ChatColor.GOLD + "<" + e.getPlayer().getDisplayName() + "> " + ChatColor.WHITE + ChatColor.translateAlternateColorCodes('&', e.getMessage()));
+                    break;
                 case "fourLives":
                     e.setFormat(ChatColor.GREEN + "<" + e.getPlayer().getDisplayName() + "> " + ChatColor.WHITE + ChatColor.translateAlternateColorCodes('&', e.getMessage()));
+                    break;
                 case "fiveLives":
                     e.setFormat(ChatColor.DARK_GREEN + "<" + e.getPlayer().getDisplayName() + "> " + ChatColor.WHITE + ChatColor.translateAlternateColorCodes('&', e.getMessage()));
+                    break;
                 case "sixLives":
                     e.setFormat(ChatColor.DARK_GREEN + "<" + e.getPlayer().getDisplayName() + "> " + ChatColor.WHITE + ChatColor.translateAlternateColorCodes('&', e.getMessage()));
+                    break;
             }
         }
     }
@@ -142,26 +159,27 @@ public class Players implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
-        Team playerTeam = p.getScoreboard().getEntryTeam(p.getDisplayName());
+        int playerLives = yaml.getPlayerLives(p);
 
-        if (playerTeam != null) {
-            playerTeam.removeEntry(p.getDisplayName());
-            int playerLives = yaml.getPlayerLives(p);
-
-            switch (playerLives) {
-                case 1:
-                    oneLive.addEntry(p.getDisplayName());
-                case 2:
-                    twoLives.addEntry(p.getDisplayName());
-                case 3:
-                    threeLives.addEntry(p.getDisplayName());
-                case 4:
-                    fourLives.addEntry(p.getDisplayName());
-                case 5:
-                    fiveLives.addEntry(p.getDisplayName());
-                case 6:
-                    sixLives.addEntry(p.getDisplayName());
-            }
+        switch (playerLives) {
+            case 1:
+                oneLive.addEntry(p.getDisplayName());
+                break;
+            case 2:
+                twoLives.addEntry(p.getDisplayName());
+                break;
+            case 3:
+                threeLives.addEntry(p.getDisplayName());
+                break;
+            case 4:
+                fourLives.addEntry(p.getDisplayName());
+                break;
+            case 5:
+                fiveLives.addEntry(p.getDisplayName());
+                break;
+            case 6:
+                sixLives.addEntry(p.getDisplayName());
+                break;
         }
     }
 }
