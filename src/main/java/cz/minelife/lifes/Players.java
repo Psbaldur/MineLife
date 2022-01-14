@@ -3,6 +3,7 @@ package cz.minelife.lifes;
 import cz.minelife.dtb.Yaml;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -14,6 +15,7 @@ import org.bukkit.scoreboard.ScoreboardManager;
 import org.bukkit.scoreboard.Team;
 
 import java.util.Objects;
+import java.util.UUID;
 
 public class Players implements Listener {
     private JavaPlugin plugin;
@@ -82,8 +84,32 @@ public class Players implements Listener {
     public void onPlayerDeath(PlayerDeathEvent e) {
         Player p = e.getEntity();
         Team playerTeam = p.getScoreboard().getEntryTeam(p.getDisplayName());
+        int playerLives = yaml.getPlayerLives(p);
 
         Objects.requireNonNull(playerTeam).removeEntry(p.getDisplayName());
+
+        yaml.setPlayerLives(p, playerLives - 1);
+
+        switch(playerLives - 1) {
+            case 0:
+                p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c&lTy už jsi stihl vyplýtvat životy? No nic, zde máš spectatora."));
+                p.setGameMode(GameMode.SPECTATOR);
+            case 1:
+                p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c&lNo a to čeho jsi se obával je zde, odteď je tvým jediným cílem zabít ostatní hráče."));
+                oneLive.addEntry(p.getDisplayName());
+            case 2:
+                p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c&lZemřel jsi a ztratil jsi život. Tvůj aktuální počet životů je dva. Měj se na pozoru!"));
+                twoLives.addEntry(p.getDisplayName());
+            case 3:
+                p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c&lZemřel jsi a ztratil jsi život. Tvůj aktuální počet životů je tři. Měj se na pozoru!"));
+                threeLives.addEntry(p.getDisplayName());
+            case 4:
+                p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c&lZemřel jsi a ztratil jsi život. Tvůj aktuální počet životů je čtyři. Měj se na pozoru!"));
+                fourLives.addEntry(p.getDisplayName());
+            case 5:
+                p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c&lZemřel jsi a ztratil jsi život. Tvůj aktuální počet životů je pět. Měj se na pozoru!"));
+                fiveLives.addEntry(p.getDisplayName());
+        }
     }
 
     @EventHandler
