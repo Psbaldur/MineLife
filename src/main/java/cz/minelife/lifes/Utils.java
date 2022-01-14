@@ -4,7 +4,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class Utils {
     private static final Random RANDOM = new Random();
