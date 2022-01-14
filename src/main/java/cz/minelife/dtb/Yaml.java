@@ -6,7 +6,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Yaml {
-    private final JavaPlugin plugin;
+    private JavaPlugin plugin;
     private FileConfiguration config;
     public Yaml(JavaPlugin plugin) {
         this.plugin = plugin;
