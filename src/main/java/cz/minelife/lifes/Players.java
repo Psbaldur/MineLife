@@ -10,14 +10,11 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
 import org.bukkit.scoreboard.Team;
 
-import java.util.Objects;
-import java.util.UUID;
 
 public class Players implements Listener {
     private JavaPlugin plugin;
@@ -68,21 +65,27 @@ public class Players implements Listener {
 
             switch (lives) {
                 case 1:
+                    p.sendMessage(ChatColor.RED + "Vše nastaveno!");
                     oneLive.addEntry(p.getDisplayName());
                     break;
                 case 2:
+                    p.sendMessage(ChatColor.RED + "Vše nastaveno!");
                     twoLives.addEntry(p.getDisplayName());
                     break;
                 case 3:
+                    p.sendMessage(ChatColor.RED + "Vše nastaveno!");
                     threeLives.addEntry(p.getDisplayName());
                     break;
                 case 4:
+                    p.sendMessage(ChatColor.RED + "Vše nastaveno!");
                     fourLives.addEntry(p.getDisplayName());
                     break;
                 case 5:
+                    p.sendMessage(ChatColor.RED + "Vše nastaveno!");
                     fiveLives.addEntry(p.getDisplayName());
                     break;
                 case 6:
+                    p.sendMessage(ChatColor.RED + "Vše nastaveno!");
                     sixLives.addEntry(p.getDisplayName());
                     break;
             }
@@ -147,8 +150,6 @@ public class Players implements Listener {
                     e.setFormat(ChatColor.GREEN + "<" + e.getPlayer().getDisplayName() + "> " + ChatColor.WHITE + ChatColor.translateAlternateColorCodes('&', e.getMessage()));
                     break;
                 case "fiveLives":
-                    e.setFormat(ChatColor.DARK_GREEN + "<" + e.getPlayer().getDisplayName() + "> " + ChatColor.WHITE + ChatColor.translateAlternateColorCodes('&', e.getMessage()));
-                    break;
                 case "sixLives":
                     e.setFormat(ChatColor.DARK_GREEN + "<" + e.getPlayer().getDisplayName() + "> " + ChatColor.WHITE + ChatColor.translateAlternateColorCodes('&', e.getMessage()));
                     break;
