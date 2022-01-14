@@ -7,3 +7,6 @@ commands:
   setupCmd:
     description: Nastavení serveru
     usage: /setupCmd
+  boogeyman:
+    description: Vybrání boogeymana
+    usage: /boogeyman
