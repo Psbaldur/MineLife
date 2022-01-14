@@ -3,7 +3,6 @@ package cz.minelife;
 import cz.minelife.lifes.Players;
 import cz.minelife.lifes.SetupCmd;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scoreboard.Team;
 
 public final class Main extends JavaPlugin {
     @Override
