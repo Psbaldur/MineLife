@@ -34,9 +34,10 @@ public class Players implements Listener {
     public Players(JavaPlugin plugin) {
         this.plugin = plugin;
         this.yaml = new Yaml(this.plugin);
+        this.setup();
     }
 
-    public Players setup() {
+    public void setup() {
         for (Team t: scoreboard.getTeams()) {
             t.unregister();
         }
@@ -54,8 +55,7 @@ public class Players implements Listener {
         fourLives.setColor(ChatColor.GREEN);
         fiveLives.setColor(ChatColor.DARK_GREEN);
         sixLives.setColor(ChatColor.DARK_GREEN);
-
-        return this;
+        this.addPlayersToTeams();
     }
 
     public void addPlayersToTeams() {
@@ -141,9 +141,26 @@ public class Players implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
-        int playerLives = yaml.getPlayerLives(p);
+        Team playerTeam = p.getScoreboard().getEntryTeam(p.getDisplayName());
 
-        if (playerLives == 0)
-            p.setGameMode(GameMode.SPECTATOR);
+        if (playerTeam != null) {
+            playerTeam.removeEntry(p.getDisplayName());
+            int playerLives = yaml.getPlayerLives(p);
+
+            switch (playerLives) {
+                case 1:
+                    oneLive.addEntry(p.getDisplayName());
+                case 2:
+                    twoLives.addEntry(p.getDisplayName());
+                case 3:
+                    threeLives.addEntry(p.getDisplayName());
+                case 4:
+                    fourLives.addEntry(p.getDisplayName());
+                case 5:
+                    fiveLives.addEntry(p.getDisplayName());
+                case 6:
+                    sixLives.addEntry(p.getDisplayName());
+            }
+        }
     }
 }
