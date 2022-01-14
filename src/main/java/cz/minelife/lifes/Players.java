@@ -96,7 +96,8 @@ public class Players implements Listener {
     public void onPlayerDeath(PlayerDeathEvent e) {
         Player p = e.getEntity();
         Team playerTeam = p.getScoreboard().getEntryTeam(p.getDisplayName());
-        int playerLives = yaml.getPlayerLives(p);
+        int playerLives = yaml.getPlayerLives(p) - 1;
+        yaml.setPlayerLives(p, playerLives);
 
         assert playerTeam != null;
         playerTeam.removeEntry(p.getDisplayName());
@@ -127,7 +128,6 @@ public class Players implements Listener {
                 p.sendMessage(ChatColor.RED + "Právě jsi zemřel a ztratil život. Už ti zbývají pouze 5 životů. Buď opatrný!");
                 break;
         }
-        yaml.setPlayerLives(p, playerLives - 1);
     }
 
     @EventHandler
