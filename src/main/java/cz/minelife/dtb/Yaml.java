@@ -1,6 +1,5 @@
 package cz.minelife.dtb;
 
-import cz.minelife.Main;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
