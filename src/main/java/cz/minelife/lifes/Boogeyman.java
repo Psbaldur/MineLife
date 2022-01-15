@@ -7,11 +7,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
-
-import java.util.Collection;
 
 import static cz.minelife.lifes.Utils.randomPlayer;
 import static cz.minelife.lifes.Utils.setTitle;
@@ -27,13 +24,12 @@ public class Boogeyman implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-
         if (sender.isOp()) {
             this.choose();
         } else {
             sender.sendMessage(ChatColor.RED + "Err");
         }
-        return false;
+        return true;
     }
 
     private void choose() {
