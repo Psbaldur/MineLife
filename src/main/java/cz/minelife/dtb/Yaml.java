@@ -6,7 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Yaml {
     private JavaPlugin plugin;
-    private FileConfiguration config;
+    public FileConfiguration config;
 
     public Yaml(JavaPlugin plugin) {
         this.plugin = plugin;
