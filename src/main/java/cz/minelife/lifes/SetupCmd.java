@@ -49,6 +49,7 @@ public class SetupCmd implements CommandExecutor {
                                 }
                                 this.cancel();
                                 new Players(plugin).setup();
+                                new Boogeyman(plugin).choose();
                             }
                             i++;
                         }
