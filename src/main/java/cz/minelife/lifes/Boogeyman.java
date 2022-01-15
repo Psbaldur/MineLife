@@ -45,8 +45,10 @@ public class Boogeyman implements CommandExecutor {
                 for (Player p: Bukkit.getOnlinePlayers()) {
                     if (p.getDisplayName().equals(randomPlayer.getDisplayName())) {
                         setTitle(p, "&cYOU ARE BOOGEYMAN", "");
+                        yaml.config.set("players." + p.getDisplayName() + ".isBoogey", true);
                     } else {
                         setTitle(p, "&aYOU ARE INNOCENT", "");
+                        yaml.config.set("players." + p.getDisplayName() + ".isBoogey", false);
                     }
                 }
             }
