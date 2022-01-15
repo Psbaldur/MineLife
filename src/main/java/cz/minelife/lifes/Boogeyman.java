@@ -33,7 +33,7 @@ public class Boogeyman implements CommandExecutor {
         return true;
     }
 
-    private void choose() {
+    public void choose() {
         new BukkitRunnable() {
             @Override
             public void run() {
@@ -41,16 +41,17 @@ public class Boogeyman implements CommandExecutor {
 
                 for (Player p: Bukkit.getOnlinePlayers()) {
                     if (p.getDisplayName().equals(randomPlayer.getDisplayName())) {
-                        setTitle(p, "&cYOU ARE BOOGEYMAN", "");
+                        setTitle(p, "&cBYL JSI PROKLET BABICÍ", "");
                         p.playSound(p.getLocation(), Sound.ENTITY_WITHER_DEATH, 0.6f, 1f);
+                        p.sendMessage(ChatColor.RED + "Byl jsi proklet Babicí. Odteď do konce dnešního sezení musíš zabít jednoho hráče, aby jsi se vyléčil. V případě, že hráče nezabiješ stihne tě trest a to taký, že příště budeš mít pouze 1 život.");
                         yaml.setBoogeyman(p, true);
                     } else {
-                        setTitle(p, "&aYOU ARE INNOCENT", "");
+                        setTitle(p, "&aJSI ZDRAVÝ A ČILÝ", "TO ZNAMENÁ, ŽE SI NEBYL PROKLET");
                         p.playSound(p.getLocation(), Sound.BLOCK_AMETHYST_BLOCK_CHIME, 1f, 1f);
                         yaml.setBoogeyman(p, false);
                     }
                 }
             }
-        }.runTaskLater(plugin, 10L);
+        }.runTaskLater(plugin, 20*900);
     }
 }
