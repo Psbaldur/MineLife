@@ -26,7 +26,7 @@ public class SetupCmd implements CommandExecutor {
             @Override
             public void run() {
                 for (Player player : Bukkit.getOnlinePlayers()) {
-                    setTitle(player, randomInt());
+                    setTitle(player, randomInt(6 , 2));
                 }
 
                 if (i >= 100) {
@@ -36,12 +36,12 @@ public class SetupCmd implements CommandExecutor {
                         @Override
                         public void run() {
                             for (Player player : Bukkit.getOnlinePlayers()) {
-                                setTitle(player, randomInt());
+                                setTitle(player, randomInt(6, 2));
                             }
 
                             if (i >= 25) {
                                 for (Player p : Bukkit.getOnlinePlayers()) {
-                                    int random = Utils.randomInt();
+                                    int random = Utils.randomInt(6, 2);
 
                                     setTitle(p, random);
                                     yaml.setPlayerLives(p, random);
@@ -51,7 +51,7 @@ public class SetupCmd implements CommandExecutor {
                             }
                             i++;
                         }
-                    }.runTaskTimer(plugin, 2L, 5L);
+                    }.runTaskTimer(plugin, 2L, 8L);
                     this.cancel();
                 }
                 i++;
