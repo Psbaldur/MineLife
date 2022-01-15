@@ -65,27 +65,21 @@ public class Players implements Listener {
 
             switch (lives) {
                 case 1:
-                    p.sendMessage(ChatColor.RED + "Vše nastaveno!");
                     oneLive.addEntry(p.getDisplayName());
                     break;
                 case 2:
-                    p.sendMessage(ChatColor.RED + "Vše nastaveno!");
                     twoLives.addEntry(p.getDisplayName());
                     break;
                 case 3:
-                    p.sendMessage(ChatColor.RED + "Vše nastaveno!");
                     threeLives.addEntry(p.getDisplayName());
                     break;
                 case 4:
-                    p.sendMessage(ChatColor.RED + "Vše nastaveno!");
                     fourLives.addEntry(p.getDisplayName());
                     break;
                 case 5:
-                    p.sendMessage(ChatColor.RED + "Vše nastaveno!");
                     fiveLives.addEntry(p.getDisplayName());
                     break;
                 case 6:
-                    p.sendMessage(ChatColor.RED + "Vše nastaveno!");
                     sixLives.addEntry(p.getDisplayName());
                     break;
             }
