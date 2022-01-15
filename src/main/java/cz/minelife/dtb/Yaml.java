@@ -6,7 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Yaml {
     private JavaPlugin plugin;
-    public FileConfiguration config;
+    private FileConfiguration config;
 
     public Yaml(JavaPlugin plugin) {
         this.plugin = plugin;
@@ -25,6 +25,11 @@ public class Yaml {
 
     public int getPlayerLives(Player p) {
         return this.config.getInt("players." + p.getDisplayName() + ".lives");
+    }
+
+    public void setBoogeyman(Player p, boolean isBoogey) {
+        this.config.set("players." + p.getDisplayName() + ".isBoogey", isBoogey);
+        this.reloadConfig();
     }
 }
 

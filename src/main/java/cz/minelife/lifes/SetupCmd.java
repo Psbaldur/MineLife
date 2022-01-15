@@ -2,6 +2,7 @@ package cz.minelife.lifes;
 
 import cz.minelife.dtb.Yaml;
 import org.bukkit.Bukkit;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -26,7 +27,7 @@ public class SetupCmd implements CommandExecutor {
             @Override
             public void run() {
                 for (Player player : Bukkit.getOnlinePlayers()) {
-                    setTitle(player, randomInt(6 , 2));
+                    setTitle(player, randomInt(6 , 2), Sound.BLOCK_COMPARATOR_CLICK);
                 }
 
                 if (i >= 100) {
@@ -36,14 +37,14 @@ public class SetupCmd implements CommandExecutor {
                         @Override
                         public void run() {
                             for (Player player : Bukkit.getOnlinePlayers()) {
-                                setTitle(player, randomInt(6, 2));
+                                setTitle(player, randomInt(6, 2), Sound.BLOCK_COMPARATOR_CLICK);
                             }
 
                             if (i >= 25) {
                                 for (Player p : Bukkit.getOnlinePlayers()) {
                                     int random = Utils.randomInt(6, 2);
 
-                                    setTitle(p, random);
+                                    setTitle(p, random, Sound.ENTITY_PLAYER_LEVELUP);
                                     yaml.setPlayerLives(p, random);
                                 }
                                 this.cancel();

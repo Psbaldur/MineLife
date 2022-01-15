@@ -3,6 +3,7 @@ package cz.minelife.lifes;
 import cz.minelife.dtb.Yaml;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -41,10 +42,12 @@ public class Boogeyman implements CommandExecutor {
                 for (Player p: Bukkit.getOnlinePlayers()) {
                     if (p.getDisplayName().equals(randomPlayer.getDisplayName())) {
                         setTitle(p, "&cYOU ARE BOOGEYMAN", "");
-                        yaml.config.set("players." + p.getDisplayName() + ".isBoogey", true);
+                        p.playSound(p.getLocation(), Sound.ENTITY_WITHER_DEATH, 0.5f, 1f);
+                        yaml.setBoogeyman(p, true);
                     } else {
                         setTitle(p, "&aYOU ARE INNOCENT", "");
-                        yaml.config.set("players." + p.getDisplayName() + ".isBoogey", false);
+                        p.playSound(p.getLocation(), Sound.BLOCK_AMETHYST_BLOCK_CHIME, 1f, 1f);
+                        yaml.setBoogeyman(p, false);
                     }
                 }
             }
