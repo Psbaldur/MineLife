@@ -32,7 +32,7 @@ public class Utils {
         player.sendTitle(ChatColor.translateAlternateColorCodes('&', "&c" + text), "", 1, 20*5, 1);
     }
 
-    public static int randomInt() {
-        return RANDOM.nextInt(6 - 2) + 2;
+    public static int randomInt(int max, int min) {
+        return RANDOM.nextInt(max - min) + min;
     }
 }
