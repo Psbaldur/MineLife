@@ -38,7 +38,7 @@ public class EndSession implements CommandExecutor {
                     Bukkit.getServer().savePlayers();
                     Bukkit.getServer().shutdown();
                 }
-            }.runTaskLater(plugin, 20 * 10);
+            }.runTaskLater(plugin, 20 * 300);
         } else {
             sender.sendMessage(ChatColor.RED + "Err.");
         }
