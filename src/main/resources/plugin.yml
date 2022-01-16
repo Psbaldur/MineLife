@@ -13,3 +13,6 @@ commands:
   endSession:
     description: Konec
     usage: /endSession
+  givelife:
+    description: Možnost dát život jinému hráči
+    usage: /givelife [nick_hráče]

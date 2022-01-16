@@ -1,9 +1,6 @@
 package cz.minelife;
 
-import cz.minelife.lifes.Boogeyman;
-import cz.minelife.lifes.EndSession;
-import cz.minelife.lifes.Players;
-import cz.minelife.lifes.SetupCmd;
+import cz.minelife.lifes.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin {
@@ -15,6 +12,7 @@ public final class Main extends JavaPlugin {
         getCommand("setupCmd").setExecutor(new SetupCmd(this));
         getCommand("startSession").setExecutor(new Boogeyman(this));
         getCommand("endSession").setExecutor(new EndSession(this));
+        getCommand("givelife").setExecutor(new GiveLife(this));
 
         getServer().getPluginManager().registerEvents(new Players(this), this);
         getLogger().info("Plugin MineLife byl úspěšně zapnut");
