@@ -10,3 +10,6 @@ commands:
   setupCmd:
     description: Nastavení serveru
     usage: /setupCmd
+  endSession:
+    description: Konec
+    usage: /endSession

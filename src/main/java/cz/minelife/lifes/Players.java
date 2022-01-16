@@ -4,6 +4,7 @@ import cz.minelife.dtb.Yaml;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -92,6 +93,12 @@ public class Players implements Listener {
         Team playerTeam = p.getScoreboard().getEntryTeam(p.getDisplayName());
         int playerLives = yaml.getPlayerLives(p) - 1;
         yaml.setPlayerLives(p, playerLives);
+
+        if (p.getKiller() != null && p.getKiller().getDisplayName().equals(yaml.getBoogeyman())) {
+            Bukkit.getPlayer(yaml.getBoogeyman()).sendMessage("§aProlomil jsi prokletí! Babice bude trochu naštvaná...");
+            p.playSound(p.getLocation() , Sound.ENTITY_ENDER_DRAGON_DEATH, 1, 1);
+            yaml.setIfIsBoogeyCured(true);
+        }
 
         assert playerTeam != null;
         playerTeam.removeEntry(p.getDisplayName());

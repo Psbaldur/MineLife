@@ -38,10 +38,10 @@ public class EndSession implements CommandExecutor {
                     Bukkit.getServer().savePlayers();
                     Bukkit.getServer().shutdown();
                 }
-            }.runTaskLater(plugin, 20 * 300);
+            }.runTaskLater(plugin, 20 * 10);
         } else {
             sender.sendMessage(ChatColor.RED + "Err.");
         }
-        return false;
+        return true;
     }
 }

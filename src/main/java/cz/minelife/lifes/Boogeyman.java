@@ -51,6 +51,6 @@ public class Boogeyman implements CommandExecutor {
                     }
                 }
             }
-        }.runTaskLater(plugin, 20*900);
+        }.runTaskLater(plugin, 20*10);
     }
 }

@@ -34,6 +34,14 @@ public class Yaml {
         this.reloadConfig();
     }
 
+    public void setIfIsBoogeyCured(Boolean bool) {
+        /**
+         * HEY
+         *
+         *
+         * **/
+    }
+
     public String getBoogeyman() {
         String boogeyman = (String) this.config.get("boogeyman.who");
         return boogeyman;
