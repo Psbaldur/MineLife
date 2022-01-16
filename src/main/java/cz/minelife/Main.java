@@ -12,7 +12,7 @@ public final class Main extends JavaPlugin {
         getCommand("setupCmd").setExecutor(new SetupCmd(this));
         getCommand("startSession").setExecutor(new Boogeyman(this));
         getCommand("endSession").setExecutor(new EndSession(this));
-        getCommand("givelife").setExecutor(new GiveLife(this));
+        getCommand("givelife").setExecutor(new GiveLive(this));
 
         getServer().getPluginManager().registerEvents(new Players(this), this);
         getLogger().info("Plugin MineLife byl úspěšně zapnut");

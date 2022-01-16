@@ -10,11 +10,11 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class GiveLife implements CommandExecutor {
+public class GiveLive implements CommandExecutor {
     private JavaPlugin plugin;
     private Yaml yaml;
 
-    public GiveLife(JavaPlugin plugin) {
+    public GiveLive(JavaPlugin plugin) {
         this.plugin = plugin;
         this.yaml = new Yaml(plugin);
     }

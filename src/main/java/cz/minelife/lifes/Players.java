@@ -32,7 +32,6 @@ public class Players implements Listener {
     public Players(JavaPlugin plugin) {
         this.plugin = plugin;
         this.yaml = new Yaml(this.plugin);
-        this.setup();
     }
 
     public void setup() {
