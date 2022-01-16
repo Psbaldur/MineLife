@@ -22,12 +22,12 @@ public class Players implements Listener {
     private ScoreboardManager manager = Bukkit.getScoreboardManager();
     private Scoreboard scoreboard = manager.getMainScoreboard();
     private Yaml yaml;
-    Team oneLive;
-    Team twoLives;
-    Team threeLives;
-    Team fourLives;
-    Team fiveLives;
-    Team sixLives;
+    private Team oneLive;
+    private Team twoLives;
+    private Team threeLives;
+    private Team fourLives;
+    private Team fiveLives;
+    private Team sixLives;
 
     public Players(JavaPlugin plugin) {
         this.plugin = plugin;
@@ -83,6 +83,35 @@ public class Players implements Listener {
                     sixLives.addEntry(p.getDisplayName());
                     break;
             }
+        }
+    }
+
+    public void addPlayerToTeam(Player p) {
+        int playerLives = yaml.getPlayerLives(p);
+        Team playerTeam = p.getScoreboard().getEntryTeam(p.getDisplayName());
+
+        if (playerTeam != null)
+            playerTeam.removeEntry(p.getDisplayName());
+
+        switch (playerLives) {
+            case 1:
+                oneLive.addEntry(p.getDisplayName());
+                break;
+            case 2:
+                twoLives.addEntry(p.getDisplayName());
+                break;
+            case 3:
+                threeLives.addEntry(p.getDisplayName());
+                break;
+            case 4:
+                fourLives.addEntry(p.getDisplayName());
+                break;
+            case 5:
+                fiveLives.addEntry(p.getDisplayName());
+                break;
+            case 6:
+                sixLives.addEntry(p.getDisplayName());
+                break;
         }
     }
 

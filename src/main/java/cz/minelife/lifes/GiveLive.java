@@ -24,6 +24,7 @@ public class GiveLive implements CommandExecutor {
         if (sender instanceof Player && args[0] != null) {
             Player receiver = Bukkit.getPlayer(args[0]);
             Player santa = (Player) sender;
+            Players players = new Players(plugin);
 
             assert receiver != null;
 
@@ -32,8 +33,12 @@ public class GiveLive implements CommandExecutor {
 
             yaml.setPlayerLives(receiver, receiverLives + 1);
             yaml.setPlayerLives(santa, santaLives - 1);
+
             receiver.playEffect(EntityEffect.TOTEM_RESURRECT);
             santa.playSound(receiver.getLocation(), Sound.ITEM_TOTEM_USE, 1, 1);
+
+            players.addPlayerToTeam(santa);
+            players.addPlayerToTeam(receiver);
         }
         return true;
     }
