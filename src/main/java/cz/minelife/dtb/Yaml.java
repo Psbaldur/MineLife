@@ -1,5 +1,6 @@
 package cz.minelife.dtb;
 
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -27,9 +28,20 @@ public class Yaml {
         return this.config.getInt("players." + p.getDisplayName() + ".lives");
     }
 
-    public void setBoogeyman(Player p, boolean isBoogey) {
-        this.config.set("players." + p.getDisplayName() + ".isBoogey", isBoogey);
+    public void setBoogeyman(Player p) {
+        this.config.set("boogeyman.who", p.getDisplayName());
+        this.config.set("boogeyman.isCured", false);
         this.reloadConfig();
+    }
+
+    public String getBoogeyman() {
+        String boogeyman = (String) this.config.get("boogeyman.who");
+        return boogeyman;
+    }
+
+    public Boolean getIfIsBoogeyCured() {
+        Boolean boogeyman = this.config.getBoolean("boogeyman.isCured");
+        return boogeyman;
     }
 }
 
