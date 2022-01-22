@@ -221,6 +221,11 @@ public class Players implements Listener, CommandExecutor {
             int receiverLives = yaml.getPlayerLives(receiver);
             int santaLives = yaml.getPlayerLives(santa);
 
+            if ((receiverLives + 1) >= 7) {
+                santa.sendMessage("§cHráč, který má obdržet život nemůže mít 7 životů!");
+                return false;
+            }
+
             yaml.setPlayerLives(receiver, receiverLives + 1);
             yaml.setPlayerLives(santa, santaLives - 1);
 
@@ -229,6 +234,8 @@ public class Players implements Listener, CommandExecutor {
 
             this.addPlayerToTeam(santa);
             this.addPlayerToTeam(receiver);
+        } else {
+
         }
         return true;
     }

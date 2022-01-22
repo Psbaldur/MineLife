@@ -42,7 +42,7 @@ public class Boogeyman implements CommandExecutor {
                 for (Player p: Bukkit.getOnlinePlayers()) {
                     if (p.getDisplayName().equals(randomPlayer.getDisplayName())) {
                         setTitle(p, "&cBYL JSI PROKLET BABICÍ", "");
-                        p.playSound(p.getLocation(), Sound.ENTITY_WITHER_DEATH, 0.6f, 1f);
+                        p.playSound(p.getLocation(), Sound.ENTITY_WITHER_DEATH, 1f, 1f);
                         p.sendMessage(ChatColor.RED + "Byl jsi proklet Babicí. Odteď do konce dnešního sezení musíš zabít jednoho hráče, aby jsi se vyléčil. V případě, že hráče nezabiješ stihne tě trest a to taký, že příště budeš mít pouze 1 život.");
                         yaml.setBoogeyman(p);
                     } else {

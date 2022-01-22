@@ -35,11 +35,7 @@ public class Yaml {
     }
 
     public void setIfIsBoogeyCured(Boolean bool) {
-        /**
-         * HEY
-         *
-         *
-         * **/
+        this.config.set("boogeyman.isCured", bool);
     }
 
     public String getBoogeyman() {

@@ -38,6 +38,7 @@ public class Utils {
     }
 
     public static int randomInt(int max, int min) {
+        max++;
         return RANDOM.nextInt(max - min) + min;
     }
 
