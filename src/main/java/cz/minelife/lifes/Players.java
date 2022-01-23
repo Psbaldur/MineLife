@@ -126,7 +126,7 @@ public class Players implements Listener, CommandExecutor {
         if (p.getKiller() != null && p.getKiller().getDisplayName().equals(yaml.getBoogeyman()) && !yaml.getIfIsBoogeyCured()) {
             Bukkit.getPlayer(yaml.getBoogeyman()).sendMessage("§aProlomil jsi prokletí! Babice bude trochu naštvaná...");
             p.playSound(p.getLocation() , Sound.ENTITY_ENDER_DRAGON_DEATH, 1, 1);
-            yaml.setIfIsBoogeyCured(true);
+            yaml.setIfIsBoogeymanCured(true);
         }
 
         //assert playerTeam != null;
@@ -189,6 +189,8 @@ public class Players implements Listener, CommandExecutor {
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
         int playerLives = yaml.getPlayerLives(p);
+
+        p.setScoreboard(scoreboard);
 
         switch (playerLives) {
             case 1:

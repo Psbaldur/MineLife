@@ -34,7 +34,7 @@ public class Yaml {
         this.reloadConfig();
     }
 
-    public void setIfIsBoogeyCured(Boolean bool) {
+    public void setIfIsBoogeymanCured(Boolean bool) {
         this.config.set("boogeyman.isCured", bool);
     }
 
