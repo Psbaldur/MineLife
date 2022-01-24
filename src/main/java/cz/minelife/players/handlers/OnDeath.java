@@ -1,4 +1,4 @@
-package cz.minelife.players;
+package cz.minelife.players.handlers;
 
 import cz.minelife.dtb.Yaml;
 import org.bukkit.Bukkit;
@@ -9,12 +9,20 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.Team;
 
 import static cz.minelife.teams.Teams.*;
 
-public class onDeath implements Listener {
-    private Yaml yaml = new Yaml();
+public class OnDeath implements Listener {
+    private JavaPlugin plugin;
+    private Yaml yaml;
+
+    public OnDeath(JavaPlugin plugin) {
+        this.plugin = plugin;
+        yaml = new Yaml(plugin);
+    }
+
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent e) {
         Player p = e.getEntity();
