@@ -14,11 +14,11 @@ import org.bukkit.scoreboard.Team;
 
 import static cz.minelife.teams.ETeams.*;
 
-public class OnDeath implements Listener {
+public class OnPlayerDeath implements Listener {
     private JavaPlugin plugin;
     private Yaml yaml;
 
-    public OnDeath(JavaPlugin plugin) {
+    public OnPlayerDeath(JavaPlugin plugin) {
         this.plugin = plugin;
         yaml = new Yaml(plugin);
     }

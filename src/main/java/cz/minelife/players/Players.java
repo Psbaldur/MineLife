@@ -8,6 +8,8 @@ import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
 import org.bukkit.scoreboard.Team;
 
+import static cz.minelife.teams.ETeams.*;
+
 
 public class Players {
     private JavaPlugin plugin;
@@ -24,14 +26,9 @@ public class Players {
     public Players(JavaPlugin plugin) {
         this.plugin = plugin;
         this.yaml = new Yaml(this.plugin);
-        this.setup();
     }
 
     public void setup() {
-        for (Team t: scoreboard.getTeams()) {
-            t.unregister();
-        }
-
         oneLive = scoreboard.registerNewTeam("oneLive");
         twoLives = scoreboard.registerNewTeam("twoLives");
         threeLives = scoreboard.registerNewTeam("threeLives");
@@ -45,6 +42,7 @@ public class Players {
         fourLives.setColor(ChatColor.GREEN);
         fiveLives.setColor(ChatColor.DARK_GREEN);
         sixLives.setColor(ChatColor.DARK_GREEN);
+
         this.addPlayersToTeams();
     }
 
@@ -58,22 +56,22 @@ public class Players {
 
             switch (lives) {
                 case 1:
-                    oneLive.addEntry(p.getDisplayName());
+                    ONELIVE.setTeam(p);
                     break;
                 case 2:
-                    twoLives.addEntry(p.getDisplayName());
+                    TWOLIVES.setTeam(p);
                     break;
                 case 3:
-                    threeLives.addEntry(p.getDisplayName());
+                    THREELIVES.setTeam(p);
                     break;
                 case 4:
-                    fourLives.addEntry(p.getDisplayName());
+                    FOURLIVES.setTeam(p);
                     break;
                 case 5:
-                    fiveLives.addEntry(p.getDisplayName());
+                    FIVELIVES.setTeam(p);
                     break;
                 case 6:
-                    sixLives.addEntry(p.getDisplayName());
+                    SIXLIVES.setTeam(p);
                     break;
             }
         }
