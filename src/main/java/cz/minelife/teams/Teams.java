@@ -1,6 +1,7 @@
 package cz.minelife.teams;
 
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
 import org.bukkit.scoreboard.Team;
@@ -22,5 +23,9 @@ public enum Teams {
 
     public Team getTeam() {
         return scoreboard.getTeam(lives);
+    }
+
+    public void setTeam(Player p) {
+        scoreboard.getTeam(lives).addEntry(p.getDisplayName());
     }
 }
