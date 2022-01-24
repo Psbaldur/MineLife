@@ -15,4 +15,4 @@ commands:
     usage: /endSession
   givelive:
     description: Možnost dát život jinému hráči
-    usage: /givelife [nick_hráče]
+    usage: /givelive [nick_hráče]

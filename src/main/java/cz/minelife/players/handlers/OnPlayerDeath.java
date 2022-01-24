@@ -26,7 +26,6 @@ public class OnPlayerDeath implements Listener {
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent e) {
         Player p = e.getEntity();
-        Team playerTeam = p.getScoreboard().getEntryTeam(p.getDisplayName());
         int playerLives = yaml.getPlayerLives(p) - 1;
         yaml.setPlayerLives(p, playerLives);
 
@@ -35,8 +34,6 @@ public class OnPlayerDeath implements Listener {
             p.playSound(p.getLocation() , Sound.ENTITY_ENDER_DRAGON_DEATH, 1, 1);
             yaml.setIfIsBoogeymanCured(true);
         }
-
-        playerTeam.removeEntry(p.getDisplayName());
 
         switch (playerLives) {
             case 0:

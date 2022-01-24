@@ -10,6 +10,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import static cz.minelife.teams.ETeams.ONELIVE;
+
 public class EndSession implements CommandExecutor {
     private JavaPlugin plugin;
     private Yaml yaml;
@@ -22,12 +24,16 @@ public class EndSession implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender.isOp()) {
-            if (!yaml.getIfIsBoogeyCured()) {
+            if (yaml.getBoogeyman() != null && !yaml.getIfIsBoogeyCured()) {
                 String boogeyman = yaml.getBoogeyman();
                 Player boogey = Bukkit.getPlayer(boogeyman);
+
                 plugin.getServer().broadcastMessage("§c§lBohužel " + boogeyman + " nepřekonal své Prokletí Babicí a tak mu byly strženy životy na 1. \n\nServer se uzavře za 5 minut");
-                boogey.kickPlayer("§c§lVe tvém vlastním zájmu se již nenapojuj jinak budeš muset čelit všemu s jedním životem :)");
+
                 yaml.setPlayerLives(boogey, 1);
+                ONELIVE.setTeam(boogey);
+
+                boogey.kickPlayer("§c§lVe tvém vlastním zájmu se již nenapojuj jinak budeš muset čelit všemu s jedním životem :)");
             } else {
                 plugin.getServer().broadcastMessage("§c§lServer se automaticky vypne za 5 minut!");
             }

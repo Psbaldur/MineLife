@@ -41,6 +41,6 @@ public class Boogeyman {
                     }
                 }
             }
-        }.runTaskLater(plugin, 20*900);
+        }.runTaskLater(plugin, 20*15);
     }
 }

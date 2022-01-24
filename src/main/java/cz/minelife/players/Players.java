@@ -1,7 +1,8 @@
 package cz.minelife.players;
 
 import cz.minelife.dtb.Yaml;
-import org.bukkit.*;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.Scoreboard;
@@ -29,6 +30,10 @@ public class Players {
     }
 
     public void setup() {
+        for (Team t: scoreboard.getTeams()) {
+            t.unregister();
+        }
+
         oneLive = scoreboard.registerNewTeam("oneLive");
         twoLives = scoreboard.registerNewTeam("twoLives");
         threeLives = scoreboard.registerNewTeam("threeLives");

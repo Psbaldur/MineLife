@@ -24,7 +24,7 @@ public class GiveLive implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender instanceof Player && args[0] != null) {
+        if (sender instanceof Player && args[0] != null && !((Player) sender).getDisplayName().equals(args[0])) {
             Player receiver = Bukkit.getPlayer(args[0]);
             Player santa = (Player) sender;
 
@@ -48,6 +48,7 @@ public class GiveLive implements CommandExecutor {
             getTeamByLiveCount(santaLives).setTeam(santa);
             getTeamByLiveCount(receiverLives).setTeam(receiver);
         } else {
+            sender.sendMessage("§cSomething went wrong :(");
             return false;
         }
         return true;
