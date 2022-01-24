@@ -1,4 +1,4 @@
-package cz.minelife.lifes;
+package cz.minelife.commands;
 
 import cz.minelife.dtb.Yaml;
 import org.bukkit.Bukkit;

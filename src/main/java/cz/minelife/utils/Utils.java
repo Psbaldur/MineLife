@@ -1,12 +1,10 @@
-package cz.minelife.lifes;
+package cz.minelife.utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
-import org.bukkit.scheduler.BukkitRunnable;
 
-import java.util.Collection;
 import java.util.Random;
 
 public class Utils {

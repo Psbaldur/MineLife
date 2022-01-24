@@ -1,4 +1,4 @@
-package cz.minelife.lifes;
+package cz.minelife.players;
 
 import cz.minelife.dtb.Yaml;
 import org.bukkit.Bukkit;
@@ -11,8 +11,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import static cz.minelife.lifes.Utils.randomPlayer;
-import static cz.minelife.lifes.Utils.setTitle;
+import static cz.minelife.utils.Utils.randomPlayer;
+import static cz.minelife.utils.Utils.setTitle;
 
 public class Boogeyman implements CommandExecutor {
     private JavaPlugin plugin;

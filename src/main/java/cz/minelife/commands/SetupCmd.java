@@ -1,6 +1,9 @@
-package cz.minelife.lifes;
+package cz.minelife.commands;
 
 import cz.minelife.dtb.Yaml;
+import cz.minelife.players.Boogeyman;
+import cz.minelife.utils.Utils;
+import cz.minelife.players.Players;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
@@ -10,7 +13,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import static cz.minelife.lifes.Utils.*;
+import static cz.minelife.utils.Utils.*;
 
 public class SetupCmd implements CommandExecutor {
     private Yaml yaml;
