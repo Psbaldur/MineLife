@@ -12,7 +12,7 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.Team;
 
-import static cz.minelife.teams.Teams.*;
+import static cz.minelife.teams.ETeams.*;
 
 public class OnDeath implements Listener {
     private JavaPlugin plugin;

@@ -4,13 +4,14 @@ import cz.minelife.dtb.Yaml;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.Scoreboard;
 
-import static cz.minelife.teams.Teams.*;
+import static cz.minelife.teams.ETeams.*;
 
-public class OnPlayerJoin {
+public class OnPlayerJoin implements Listener {
     private Yaml yaml;
     private JavaPlugin plugin;
     private Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
@@ -29,22 +30,22 @@ public class OnPlayerJoin {
 
             switch (playerLives) {
                 case 1:
-                    ONELIVE.getTeam().addEntry(p.getDisplayName());
+                    ONELIVE.setTeam(p);
                     break;
                 case 2:
-                    TWOLIVES.getTeam().addEntry(p.getDisplayName());
+                    TWOLIVES.setTeam(p);
                     break;
                 case 3:
-                    THREELIVES.getTeam().addEntry(p.getDisplayName());
+                    THREELIVES.setTeam(p);
                     break;
                 case 4:
-                    FOURLIVES.getTeam().addEntry(p.getDisplayName());
+                    FOURLIVES.setTeam(p);
                     break;
                 case 5:
-                    FIVELIVES.getTeam().addEntry(p.getDisplayName());
+                    FIVELIVES.setTeam(p);
                     break;
                 case 6:
-                    SIXLIVES.getTeam().addEntry(p.getDisplayName());
+                    SIXLIVES.setTeam(p);
                     break;
             }
         }

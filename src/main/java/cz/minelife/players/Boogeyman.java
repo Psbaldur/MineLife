@@ -14,23 +14,13 @@ import org.bukkit.scheduler.BukkitRunnable;
 import static cz.minelife.utils.Utils.randomPlayer;
 import static cz.minelife.utils.Utils.setTitle;
 
-public class Boogeyman implements CommandExecutor {
+public class Boogeyman {
     private JavaPlugin plugin;
     private Yaml yaml;
 
     public Boogeyman(JavaPlugin plugin) {
         this.plugin = plugin;
         this.yaml = new Yaml(plugin);
-    }
-
-    @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender.isOp()) {
-            this.choose();
-        } else {
-            sender.sendMessage(ChatColor.RED + "Err");
-        }
-        return true;
     }
 
     public void choose() {
