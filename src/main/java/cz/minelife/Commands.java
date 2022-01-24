@@ -1,12 +1,13 @@
 package cz.minelife;
 
 import cz.minelife.commands.EndSession;
+import cz.minelife.commands.GiveLive;
 import cz.minelife.commands.SetupCmd;
 import cz.minelife.players.Boogeyman;
 
 public class Commands {
     public Commands(Main main) {
-        //SETUPCMD
+        //SETUP
         main.getCommand("setupCmd").setExecutor(new SetupCmd(main));
 
         //STARTSESSION
@@ -16,6 +17,6 @@ public class Commands {
         main.getCommand("endSession").setExecutor(new EndSession(main));
 
         //GIVELIVE
-        main.getCommand("givelive").setExecutor(players);
+        main.getCommand("givelive").setExecutor(new GiveLive());
     }
 }
