@@ -1,4 +1,4 @@
-package cz.minelife.lifes;
+package cz.minelife.players;
 
 import cz.minelife.dtb.Yaml;
 import org.bukkit.*;
