@@ -1,6 +1,9 @@
 package cz.minelife;
 
-import cz.minelife.lifes.*;
+import cz.minelife.commands.EndSession;
+import cz.minelife.commands.SetupCmd;
+import cz.minelife.players.Boogeyman;
+import cz.minelife.players.Players;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin {
