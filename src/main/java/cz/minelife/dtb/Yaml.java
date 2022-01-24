@@ -20,12 +20,12 @@ public class Yaml {
     }
 
     public void setPlayerLives(Player p, int lives) {
-        this.config.set("players." + p.getDisplayName() + ".lives", lives);
+        this.config.set("players." + p.getUniqueId() + ".lives", lives);
         this.reloadConfig();
     }
 
     public int getPlayerLives(Player p) {
-        return this.config.getInt("players." + p.getDisplayName() + ".lives");
+        return this.config.getInt("players." + p.getUniqueId() + ".lives");
     }
 
     public void setBoogeyman(Player p) {
