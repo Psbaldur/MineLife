@@ -29,7 +29,7 @@ public class Yaml {
     }
 
     public void setBoogeyman(Player p) {
-        this.config.set("boogeyman.who", p.getDisplayName());
+        this.config.set("boogeyman.who", p.getUniqueId());
         this.config.set("boogeyman.isCured", false);
         this.reloadConfig();
     }
