@@ -31,7 +31,6 @@ public class EndSession implements CommandExecutor {
 
                 plugin.getServer().broadcastMessage("§c§lBohužel " + boogeyman + " nepřekonal své Prokletí Babicí a tak mu byly strženy životy na 1. \n\nServer se uzavře za 5 minut");
 
-                yaml.setPlayerLives(boogey, 1);
                 ONELIVE.setTeam(boogey);
 
                 boogey.kickPlayer("§c§lVe tvém vlastním zájmu se již nenapojuj jinak budeš muset čelit všemu s jedním životem :)");

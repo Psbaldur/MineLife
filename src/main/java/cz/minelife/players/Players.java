@@ -10,6 +10,8 @@ import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
 import org.bukkit.scoreboard.Team;
 
+import java.util.HashMap;
+
 import static cz.minelife.teams.ETeams.*;
 
 
@@ -17,7 +19,7 @@ public class Players {
     private Main plugin;
     private ScoreboardManager manager = Bukkit.getScoreboardManager();
     private Scoreboard scoreboard = manager.getMainScoreboard();
-    private Yaml yaml;
+    private HashMap<Player, Integer> lives = new HashMap<>();
     private Team oneLive;
     private Team twoLives;
     private Team threeLives;
@@ -25,9 +27,9 @@ public class Players {
     private Team fiveLives;
     private Team sixLives;
 
-    public Players(Main plugin) {
+    public Players(Main plugin, HashMap<Player, Integer> lives) {
         this.plugin = plugin;
-        this.yaml = new Yaml(this.plugin);
+        this.lives = lives;
     }
 
     public void setup() {
@@ -54,13 +56,12 @@ public class Players {
 
     public void addPlayersToTeams() {
         for (Player p: Bukkit.getOnlinePlayers()) {
-            int lives = yaml.getPlayerLives(p);
             Team playerTeam = p.getScoreboard().getEntryTeam(p.getDisplayName());
 
             if (playerTeam != null)
                 playerTeam.removeEntry(p.getDisplayName());
 
-            switch (lives) {
+            switch (lives.get(p)) {
                 case 1:
                     ONELIVE.setTeam(p);
                     break;

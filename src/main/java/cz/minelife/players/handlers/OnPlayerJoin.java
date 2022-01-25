@@ -2,6 +2,7 @@ package cz.minelife.players.handlers;
 
 import cz.minelife.Main;
 import cz.minelife.dtb.Yaml;
+import cz.minelife.teams.ETeams;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -11,15 +12,14 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.Scoreboard;
 
 import static cz.minelife.teams.ETeams.*;
+import static cz.minelife.teams.TeamUtil.getPlayerTeam;
 
 public class OnPlayerJoin implements Listener {
-    private Yaml yaml;
     private Main plugin;
     private Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
 
     public OnPlayerJoin(Main plugin) {
         this.plugin = plugin;
-        yaml = new Yaml(plugin);
     }
 
     @EventHandler
@@ -27,9 +27,9 @@ public class OnPlayerJoin implements Listener {
         Player p = e.getPlayer();
 
         if (scoreboard.getEntryTeam(p.getDisplayName()) == null) {
-            int playerLives = yaml.getPlayerLives(p);
+            ETeams playerTeam = getPlayerTeam(p);
 
-            switch (playerLives) {
+            switch (playerTeam.getIntLives()) {
                 case 1:
                     ONELIVE.setTeam(p);
                     break;

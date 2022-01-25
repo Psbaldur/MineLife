@@ -2,6 +2,7 @@ package cz.minelife.players.handlers;
 
 import cz.minelife.Main;
 import cz.minelife.dtb.Yaml;
+import cz.minelife.teams.ETeams;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -14,6 +15,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.Team;
 
 import static cz.minelife.teams.ETeams.*;
+import static cz.minelife.teams.TeamUtil.getPlayerTeam;
 
 public class OnPlayerDeath implements Listener {
     private Main plugin;
@@ -27,8 +29,8 @@ public class OnPlayerDeath implements Listener {
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent e) {
         Player p = e.getEntity();
-        int playerLives = yaml.getPlayerLives(p) - 1;
-        yaml.setPlayerLives(p, playerLives);
+        ETeams playerTeam = getPlayerTeam(p);
+        int playerLives = playerTeam.getIntLives();
 
         if (p.getKiller() != null && p.getKiller().getDisplayName().equals(yaml.getBoogeyman()) && !yaml.getIfIsBoogeyCured()) {
             Bukkit.getPlayer(yaml.getBoogeyman()).sendMessage("§aProlomil jsi prokletí! Babice bude trochu naštvaná...");
@@ -39,6 +41,7 @@ public class OnPlayerDeath implements Listener {
         switch (playerLives) {
             case 0:
                 p.setGameMode(GameMode.SPECTATOR);
+                playerTeam.removePlayer(p);
                 p.sendMessage(ChatColor.RED + "Právě jsi zemřel. Doufám, že už tě nikdo neoživí...");
                 break;
             case 1:

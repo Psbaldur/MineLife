@@ -1,29 +1,31 @@
 package cz.minelife.commands;
 
 import cz.minelife.Main;
-import cz.minelife.dtb.Yaml;
 import cz.minelife.players.Boogeyman;
-import cz.minelife.utils.Utils;
 import cz.minelife.players.Players;
+import cz.minelife.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import static cz.minelife.utils.Utils.*;
+import java.util.HashMap;
+
+import static cz.minelife.utils.Utils.randomInt;
+import static cz.minelife.utils.Utils.setTitle;
 
 public class SetupCmd implements CommandExecutor {
-    private Yaml yaml;
     private int counter = 0;
     private Main plugin;
+    private HashMap<Player, Integer> lives = new HashMap<>();
+
     public SetupCmd(Main plugin) {
         this.plugin = plugin;
-        this.yaml = new Yaml(plugin);
     }
+
     private void startDrawingLives() {
         new BukkitRunnable() {
             int i = 0;
@@ -47,12 +49,12 @@ public class SetupCmd implements CommandExecutor {
                             if (i >= 25) {
                                 for (Player p : Bukkit.getOnlinePlayers()) {
                                     int random = Utils.randomInt(6, 2);
+                                    lives.put(p, random);
 
                                     setTitle(p, random, Sound.ENTITY_PLAYER_LEVELUP);
-                                    yaml.setPlayerLives(p, random);
                                 }
                                 this.cancel();
-                                new Players(plugin).setup();
+                                new Players(plugin, lives).setup();
                                 new Boogeyman(plugin).choose();
                             }
                             i++;

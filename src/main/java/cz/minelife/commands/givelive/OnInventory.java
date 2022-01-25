@@ -102,9 +102,6 @@ public class OnInventory implements Listener {
         if (santaLives <= 1)
             santa.sendMessage("§cNemůže ti zůstat méně jak 2 životy!");
 
-        yaml.setPlayerLives(receiver, receiverLives);
-        yaml.setPlayerLives(santa, santaLives);
-
         receiver.playEffect(EntityEffect.TOTEM_RESURRECT);
         santa.playSound(receiver.getLocation(), Sound.ITEM_TOTEM_USE, 1, 1);
 
