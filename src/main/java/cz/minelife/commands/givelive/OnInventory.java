@@ -3,6 +3,7 @@ package cz.minelife.commands.givelive;
 import cz.minelife.Main;
 import cz.minelife.dtb.Yaml;
 import cz.minelife.teams.ETeams;
+import org.bukkit.Bukkit;
 import org.bukkit.EntityEffect;
 import org.bukkit.Sound;
 import org.bukkit.enchantments.Enchantment;
@@ -101,8 +102,8 @@ public class OnInventory implements Listener {
         int receiverLives = receiverTeam.getIntLives() + livesToGive;
         int santaLives = santaTeam.getIntLives() - livesToGive;
 
-        if (receiverLives >= 7 || santaLives <= 1 || livesToGive == 0) {
-            santa.sendMessage("§cPříjemce nemůže mít více jak 6 životů a dárce nemůže mít méně jak dva životy!");
+        if (receiverLives >= 7 || santaLives <= 1 || livesToGive == 0 || receiver == santa) {
+            santa.sendMessage("§cPříjemce nemůže mít více jak 6 životů, dárce nemůže mít méně jak dva životy a musíš vybrat počet životů!");
             return;
         }
 
