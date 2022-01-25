@@ -1,4 +1,4 @@
-package cz.minelife.commands;
+package cz.minelife.commands.givelive;
 
 import cz.minelife.dtb.Yaml;
 import cz.minelife.teams.ETeams;
@@ -25,28 +25,12 @@ public class GiveLive implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player && args[0] != null && !((Player) sender).getDisplayName().equals(args[0])) {
-            Player receiver = Bukkit.getPlayer(args[0]);
+
             Player santa = (Player) sender;
+            Player receiver = Bukkit.getPlayer(args[0]);
 
-            ETeams receiverTeam = getPlayerTeam(receiver);
-            ETeams santaTeam = getPlayerTeam(santa);
+            GiveLiveGUI gui = new GiveLiveGUI(santa, receiver, yaml);
 
-            int receiverLives = receiverTeam.getIntLives() + 1;
-            int santaLives = santaTeam.getIntLives() - 1;
-
-            if (receiverLives >= 7) {
-                santa.sendMessage("§cHráč, který má obdržet život nemůže mít 7 životů!");
-                return false;
-            }
-
-            yaml.setPlayerLives(receiver, receiverLives);
-            yaml.setPlayerLives(santa, santaLives);
-
-            receiver.playEffect(EntityEffect.TOTEM_RESURRECT);
-            santa.playSound(receiver.getLocation(), Sound.ITEM_TOTEM_USE, 1, 1);
-
-            getTeamByLiveCount(santaLives).setTeam(santa);
-            getTeamByLiveCount(receiverLives).setTeam(receiver);
         } else {
             sender.sendMessage("§cSomething went wrong :(");
             return false;

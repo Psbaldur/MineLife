@@ -1,6 +1,7 @@
 package cz.minelife.teams;
 
 import org.bukkit.Bukkit;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
@@ -24,6 +25,10 @@ public enum ETeams {
 
     public Team getTeam() {
         return scoreboard.getTeam(teamName);
+    }
+
+    public void removePlayer(Player p) {
+        this.getTeam().removeEntry(p.getDisplayName());
     }
 
     public void setTeam(Player p) {

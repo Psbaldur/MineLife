@@ -1,10 +1,9 @@
 package cz.minelife;
 
 import cz.minelife.commands.EndSession;
-import cz.minelife.commands.GiveLive;
+import cz.minelife.commands.givelive.GiveLive;
 import cz.minelife.commands.SetupCmd;
 import cz.minelife.commands.StartSession;
-import cz.minelife.players.Boogeyman;
 
 public class Commands {
     public Commands(Main main) {
