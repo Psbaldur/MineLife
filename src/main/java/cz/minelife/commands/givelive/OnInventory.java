@@ -66,6 +66,8 @@ public class OnInventory implements Listener {
                 meta.addEnchant(Enchantment.WATER_WORKER, 100, true);
                 meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 
+                player.playSound(player.getLocation(), Sound.BLOCK_COMPARATOR_CLICK, 1, 2);
+
                 ItemStack item3 = inv.getItem(3);
                 ItemMeta itemMeta3 = item3.getItemMeta();
 
@@ -91,6 +93,7 @@ public class OnInventory implements Listener {
 
     public void giveLive(Player santa) {
         Player receiver = currentSantas.get(santa);
+        currentSantas.remove(santa);
 
         ETeams receiverTeam = getPlayerTeam(receiver);
         ETeams santaTeam = getPlayerTeam(santa);
@@ -98,10 +101,10 @@ public class OnInventory implements Listener {
         int receiverLives = receiverTeam.getIntLives() + livesToGive;
         int santaLives = santaTeam.getIntLives() - livesToGive;
 
-        if (receiverLives >= 7)
-            santa.sendMessage("§cPříjemce nemůže mít více jak 6 životů!");
-        if (santaLives <= 1)
-            santa.sendMessage("§cNemůže ti zůstat méně jak 2 životy!");
+        if (receiverLives >= 7 || santaLives <= 1) {
+            santa.sendMessage("§cPříjemce nemůže mít více jak 6 životů a dárce nemůže mít méně jak dva životy!");
+            return;
+        }
 
         receiver.playEffect(EntityEffect.TOTEM_RESURRECT);
         santa.playSound(receiver.getLocation(), Sound.ITEM_TOTEM_USE, 1, 1);

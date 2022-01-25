@@ -24,15 +24,13 @@ public class GiveLive implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender instanceof Player && args[0] != null && !((Player) sender).getDisplayName().equals(args[0])) {
-
+        if (sender instanceof Player && args.length == 1 && !((Player) sender).getDisplayName().equals(args[0])) {
             santa = (Player) sender;
             receiver = Bukkit.getPlayer(args[0]);
 
             currentSantas.put(santa, receiver);
 
             GiveLiveGUI gui = new GiveLiveGUI(santa, receiver, yaml);
-
             return true;
         }
         sender.sendMessage("§cSomething went wrong :(");
