@@ -30,7 +30,7 @@ public class OnPlayerDeath implements Listener {
     public void onPlayerDeath(PlayerDeathEvent e) {
         Player p = e.getEntity();
         ETeams playerTeam = getPlayerTeam(p);
-        int playerLives = playerTeam.getIntLives();
+        int playerLives = playerTeam.getIntLives() - 1;
 
         if (p.getKiller() != null && p.getKiller().getDisplayName().equals(yaml.getBoogeyman()) && !yaml.getIfIsBoogeyCured()) {
             Bukkit.getPlayer(yaml.getBoogeyman()).sendMessage("§aProlomil jsi prokletí! Babice bude trochu naštvaná...");

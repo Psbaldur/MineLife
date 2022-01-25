@@ -13,15 +13,9 @@ public class Yaml {
         this.config = plugin.getConfig();
     }
 
-    private void reloadConfig() {
-        this.plugin.saveConfig();
-        this.config = plugin.getConfig();
-    }
-
     public void setBoogeyman(Player p) {
         this.config.set("boogeyman.who", p.getDisplayName());
         this.config.set("boogeyman.isCured", false);
-        this.reloadConfig();
     }
 
     public void setIfIsBoogeymanCured(Boolean bool) {

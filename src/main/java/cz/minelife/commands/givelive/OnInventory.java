@@ -15,7 +15,6 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.plugin.java.JavaPlugin;
 
 import static cz.minelife.commands.givelive.GiveLive.currentSantas;
 import static cz.minelife.teams.TeamUtil.getPlayerTeam;
@@ -39,7 +38,7 @@ public class OnInventory implements Listener {
         event.setCancelled(true);
 
         int slot = event.getSlot();
-        Inventory inv = event.getInventory();
+        Inventory inv = event.getClickedInventory();
         Player player = (Player) event.getWhoClicked();
         ItemMeta meta = item.getItemMeta();
 
@@ -50,6 +49,8 @@ public class OnInventory implements Listener {
             case 3:
                 meta.addEnchant(Enchantment.WATER_WORKER, 100, true);
                 meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+
+                player.playSound(player.getLocation(), Sound.BLOCK_COMPARATOR_CLICK, 1, 1);
 
                 ItemStack item2 = inv.getItem(5);
                 ItemMeta itemMeta2 = item2.getItemMeta();
@@ -73,7 +74,7 @@ public class OnInventory implements Listener {
                 item3.setItemMeta(itemMeta3);
                 item.setItemMeta(meta);
 
-                livesToGive = 1;
+                livesToGive = 2;
                 break;
             case 8:
                 this.giveLive(player);

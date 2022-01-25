@@ -33,10 +33,9 @@ public class GiveLive implements CommandExecutor {
 
             GiveLiveGUI gui = new GiveLiveGUI(santa, receiver, yaml);
 
-        } else {
-            sender.sendMessage("§cSomething went wrong :(");
-            return false;
+            return true;
         }
-        return true;
+        sender.sendMessage("§cSomething went wrong :(");
+        return false;
     }
 }

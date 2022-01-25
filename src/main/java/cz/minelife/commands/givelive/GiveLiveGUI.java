@@ -30,18 +30,13 @@ public class GiveLiveGUI implements Listener {
     }
 
     public void addItems() {
-        items.put(0, CANCEL.returnItem());
-        items.put(3, ONE.returnItem());
-        items.put(5, TWO.returnItem());
-        items.put(8, CONFIRM.returnItem());
-
-        inv.setItem(0, items.get(8));
-        inv.setItem(3, items.get(8));
-        inv.setItem(5, items.get(8));
-        inv.setItem(8, items.get(8));
+        inv.setItem(0, CANCEL.returnItem());
+        inv.setItem(3, ONE.returnItem());
+        inv.setItem(5, TWO.returnItem());
+        inv.setItem(8, CONFIRM.returnItem());
     }
 
     public void openInventory() {
-        receiver.openInventory(inv);
+        santa.openInventory(inv);
     }
 }
