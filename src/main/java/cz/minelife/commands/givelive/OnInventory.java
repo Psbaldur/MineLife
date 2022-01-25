@@ -101,7 +101,7 @@ public class OnInventory implements Listener {
         int receiverLives = receiverTeam.getIntLives() + livesToGive;
         int santaLives = santaTeam.getIntLives() - livesToGive;
 
-        if (receiverLives >= 7 || santaLives <= 1) {
+        if (receiverLives >= 7 || santaLives <= 1 || livesToGive == 0) {
             santa.sendMessage("§cPříjemce nemůže mít více jak 6 životů a dárce nemůže mít méně jak dva životy!");
             return;
         }
@@ -111,5 +111,7 @@ public class OnInventory implements Listener {
 
         getTeamByLiveCount(santaLives).setTeam(santa);
         getTeamByLiveCount(receiverLives).setTeam(receiver);
+
+        livesToGive = 0;
     }
 }
