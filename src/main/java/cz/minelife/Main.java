@@ -1,5 +1,6 @@
 package cz.minelife;
 
+import cz.minelife.commands.givelive.GiveLiveGUI;
 import cz.minelife.players.Players;
 import org.bukkit.plugin.java.JavaPlugin;
 

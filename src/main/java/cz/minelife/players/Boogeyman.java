@@ -1,5 +1,6 @@
 package cz.minelife.players;
 
+import cz.minelife.Main;
 import cz.minelife.dtb.Yaml;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -15,10 +16,10 @@ import static cz.minelife.utils.Utils.randomPlayer;
 import static cz.minelife.utils.Utils.setTitle;
 
 public class Boogeyman {
-    private JavaPlugin plugin;
+    private Main plugin;
     private Yaml yaml;
 
-    public Boogeyman(JavaPlugin plugin) {
+    public Boogeyman(Main plugin) {
         this.plugin = plugin;
         this.yaml = new Yaml(plugin);
     }

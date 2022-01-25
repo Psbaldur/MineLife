@@ -1,5 +1,6 @@
 package cz.minelife.players;
 
+import cz.minelife.Main;
 import cz.minelife.dtb.Yaml;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -13,7 +14,7 @@ import static cz.minelife.teams.ETeams.*;
 
 
 public class Players {
-    private JavaPlugin plugin;
+    private Main plugin;
     private ScoreboardManager manager = Bukkit.getScoreboardManager();
     private Scoreboard scoreboard = manager.getMainScoreboard();
     private Yaml yaml;
@@ -24,7 +25,7 @@ public class Players {
     private Team fiveLives;
     private Team sixLives;
 
-    public Players(JavaPlugin plugin) {
+    public Players(Main plugin) {
         this.plugin = plugin;
         this.yaml = new Yaml(this.plugin);
     }

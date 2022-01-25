@@ -1,5 +1,6 @@
 package cz.minelife.commands;
 
+import cz.minelife.Main;
 import cz.minelife.dtb.Yaml;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -13,10 +14,10 @@ import org.bukkit.scheduler.BukkitRunnable;
 import static cz.minelife.teams.ETeams.ONELIVE;
 
 public class EndSession implements CommandExecutor {
-    private JavaPlugin plugin;
+    private Main plugin;
     private Yaml yaml;
 
-    public EndSession(JavaPlugin plugin) {
+    public EndSession(Main plugin) {
         this.plugin = plugin;
         this.yaml = new Yaml(plugin);
     }

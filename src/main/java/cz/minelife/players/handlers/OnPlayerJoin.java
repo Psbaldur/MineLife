@@ -1,5 +1,6 @@
 package cz.minelife.players.handlers;
 
+import cz.minelife.Main;
 import cz.minelife.dtb.Yaml;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -13,10 +14,10 @@ import static cz.minelife.teams.ETeams.*;
 
 public class OnPlayerJoin implements Listener {
     private Yaml yaml;
-    private JavaPlugin plugin;
+    private Main plugin;
     private Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
 
-    public OnPlayerJoin(JavaPlugin plugin) {
+    public OnPlayerJoin(Main plugin) {
         this.plugin = plugin;
         yaml = new Yaml(plugin);
     }

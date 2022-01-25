@@ -1,15 +1,16 @@
 package cz.minelife.dtb;
 
+import cz.minelife.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Yaml {
-    private JavaPlugin plugin;
+    private Main plugin;
     private FileConfiguration config;
 
-    public Yaml(JavaPlugin plugin) {
+    public Yaml(Main plugin) {
         this.plugin = plugin;
         this.config = plugin.getConfig();
     }

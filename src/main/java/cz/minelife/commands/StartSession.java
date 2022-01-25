@@ -1,5 +1,6 @@
 package cz.minelife.commands;
 
+import cz.minelife.Main;
 import cz.minelife.players.Boogeyman;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -8,9 +9,9 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class StartSession implements CommandExecutor {
-    private JavaPlugin plugin;
+    private Main plugin;
 
-    public StartSession(JavaPlugin plugin) {
+    public StartSession(Main plugin) {
         this.plugin = plugin;
     }
 

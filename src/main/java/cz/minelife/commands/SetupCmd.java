@@ -1,5 +1,6 @@
 package cz.minelife.commands;
 
+import cz.minelife.Main;
 import cz.minelife.dtb.Yaml;
 import cz.minelife.players.Boogeyman;
 import cz.minelife.utils.Utils;
@@ -18,8 +19,8 @@ import static cz.minelife.utils.Utils.*;
 public class SetupCmd implements CommandExecutor {
     private Yaml yaml;
     private int counter = 0;
-    private JavaPlugin plugin;
-    public SetupCmd(JavaPlugin plugin) {
+    private Main plugin;
+    public SetupCmd(Main plugin) {
         this.plugin = plugin;
         this.yaml = new Yaml(plugin);
     }

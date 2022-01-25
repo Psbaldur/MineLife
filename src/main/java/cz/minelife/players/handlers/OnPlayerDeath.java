@@ -1,5 +1,6 @@
 package cz.minelife.players.handlers;
 
+import cz.minelife.Main;
 import cz.minelife.dtb.Yaml;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -15,10 +16,10 @@ import org.bukkit.scoreboard.Team;
 import static cz.minelife.teams.ETeams.*;
 
 public class OnPlayerDeath implements Listener {
-    private JavaPlugin plugin;
+    private Main plugin;
     private Yaml yaml;
 
-    public OnPlayerDeath(JavaPlugin plugin) {
+    public OnPlayerDeath(Main plugin) {
         this.plugin = plugin;
         yaml = new Yaml(plugin);
     }
