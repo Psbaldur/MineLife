@@ -1,5 +1,6 @@
 package cz.minelife.teams;
 
+import org.apache.commons.lang.ObjectUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
@@ -26,6 +27,8 @@ public class TeamUtil {
                     return FIVELIVES;
                 case "sixLives":
                     return SIXLIVES;
+                default:
+                    return null;
             }
         }
         return null;

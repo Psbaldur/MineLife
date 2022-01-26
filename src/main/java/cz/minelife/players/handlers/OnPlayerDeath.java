@@ -14,6 +14,7 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.Team;
 
+import static cz.minelife.actionbar.ActionBar.livesActionBar;
 import static cz.minelife.teams.ETeams.*;
 import static cz.minelife.teams.TeamUtil.getPlayerTeam;
 
@@ -47,22 +48,27 @@ public class OnPlayerDeath implements Listener {
             case 1:
                 ONELIVE.getTeam().addEntry(p.getDisplayName());
                 p.sendMessage(ChatColor.RED + "Ou, škoda myslel jsem že máš na víc. No což, tvým novým úkolem je povraždit všechny.");
+                livesActionBar.replace(p, "§41 ŽIVOT");
                 break;
             case 2:
                 TWOLIVES.getTeam().addEntry(p.getDisplayName());
                 p.sendMessage(ChatColor.RED + "Právě jsi zemřel a ztratil život. Už ti zbývají pouze 2 životy. Buď opatrný!");
+                livesActionBar.replace(p, "§c2 ŽIVOTY");
                 break;
             case 3:
                 THREELIVES.getTeam().addEntry(p.getDisplayName());
                 p.sendMessage(ChatColor.RED + "Právě jsi zemřel a ztratil život. Už ti zbývají pouze 3 životy. Buď opatrný!");
+                livesActionBar.replace(p, "§63 ŽIVOTY");
                 break;
             case 4:
                 FOURLIVES.getTeam().addEntry(p.getDisplayName());
                 p.sendMessage(ChatColor.RED + "Právě jsi zemřel a ztratil život. Už ti zbývají pouze 4 životy. Buď opatrný!");
+                livesActionBar.replace(p, "§a4 ŽIVOTY");
                 break;
             case 5:
                 FIVELIVES.getTeam().addEntry(p.getDisplayName());
                 p.sendMessage(ChatColor.RED + "Právě jsi zemřel a ztratil život. Už ti zbývají pouze 5 životů. Buď opatrný!");
+                livesActionBar.replace(p, "§25 ŽIVOTŮ");
                 break;
         }
     }
