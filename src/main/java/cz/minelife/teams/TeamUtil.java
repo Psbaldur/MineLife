@@ -1,6 +1,5 @@
 package cz.minelife.teams;
 
-import org.apache.commons.lang.ObjectUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
@@ -13,22 +12,23 @@ public class TeamUtil {
 
     public static ETeams getPlayerTeam(Player p) {
         Team team = scoreboard.getEntryTeam(p.getDisplayName());
-        switch (team.getDisplayName()) {
-            case "oneLive":
-                return ONELIVE;
-            case "twoLives":
-                return TWOLIVES;
-            case "threeLives":
-                return THREELIVES;
-            case "fourLives":
-                return FOURLIVES;
-            case "fiveLives":
-                return FIVELIVES;
-            case "sixLives":
-                return SIXLIVES;
-            default:
-                return null;
+        if (team != null) {
+            switch (team.getDisplayName()) {
+                case "oneLive":
+                    return ONELIVE;
+                case "twoLives":
+                    return TWOLIVES;
+                case "threeLives":
+                    return THREELIVES;
+                case "fourLives":
+                    return FOURLIVES;
+                case "fiveLives":
+                    return FIVELIVES;
+                case "sixLives":
+                    return SIXLIVES;
             }
+        }
+        return null;
     }
 
     public static ETeams getTeamByLiveCount(int liveCount) {
