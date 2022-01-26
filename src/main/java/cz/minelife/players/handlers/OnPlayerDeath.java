@@ -3,7 +3,6 @@ package cz.minelife.players.handlers;
 import cz.minelife.Main;
 import cz.minelife.dtb.Yaml;
 import cz.minelife.teams.ETeams;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Sound;
@@ -11,8 +10,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scoreboard.Team;
 
 import static cz.minelife.actionbar.ActionBar.livesActionBar;
 import static cz.minelife.teams.ETeams.*;
@@ -34,8 +31,9 @@ public class OnPlayerDeath implements Listener {
         int playerLives = playerTeam.getIntLives() - 1;
 
         if (p.getKiller() != null && p.getKiller().getDisplayName().equals(yaml.getBoogeyman()) && !yaml.getIfIsBoogeyCured()) {
-            Bukkit.getPlayer(yaml.getBoogeyman()).sendMessage("§aProlomil jsi prokletí! Babice bude trochu naštvaná...");
+            p.getKiller().sendMessage("§aProlomil jsi prokletí! Babice bude trochu naštvaná...");
             p.playSound(p.getLocation() , Sound.ENTITY_ENDER_DRAGON_DEATH, 1, 1);
+            p.getWorld().strikeLightningEffect(p.getLocation());
             yaml.setIfIsBoogeymanCured(true);
         }
 
