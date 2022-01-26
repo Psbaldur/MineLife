@@ -54,7 +54,7 @@ public class SetupCmd implements CommandExecutor {
                                     setTitle(p, random, Sound.ENTITY_PLAYER_LEVELUP);
                                 }
                                 this.cancel();
-                                new Players(plugin, lives).setup();
+                                new Players(lives).setup();
                                 new Boogeyman(plugin).choose();
                             }
                             i++;

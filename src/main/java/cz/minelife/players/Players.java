@@ -1,12 +1,9 @@
 package cz.minelife.players;
 
 import cz.minelife.Main;
-import cz.minelife.dtb.Yaml;
-import cz.minelife.teams.ETeams;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
 import org.bukkit.scoreboard.Team;
@@ -15,11 +12,9 @@ import java.util.HashMap;
 
 import static cz.minelife.actionbar.ActionBar.livesActionBar;
 import static cz.minelife.teams.ETeams.*;
-import static cz.minelife.teams.TeamUtil.getPlayerTeam;
 
 
 public class Players {
-    private Main plugin;
     private ScoreboardManager manager = Bukkit.getScoreboardManager();
     private Scoreboard scoreboard = manager.getMainScoreboard();
     private HashMap<Player, Integer> lives = new HashMap<>();
@@ -30,8 +25,7 @@ public class Players {
     private Team fiveLives;
     private Team sixLives;
 
-    public Players(Main plugin, HashMap<Player, Integer> lives) {
-        this.plugin = plugin;
+    public Players(HashMap<Player, Integer> lives) {
         this.lives = lives;
     }
 
@@ -59,11 +53,6 @@ public class Players {
 
     public void addPlayersToTeams() {
         for (Player p: Bukkit.getOnlinePlayers()) {
-            ETeams playerTeam = getPlayerTeam(p);
-
-            if (playerTeam != null)
-                playerTeam.removePlayer(p);
-
             switch (lives.get(p)) {
                 case 1:
                     ONELIVE.setTeam(p);
