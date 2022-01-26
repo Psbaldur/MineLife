@@ -24,9 +24,9 @@ public class GiveLive implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-            receiver = Bukkit.getPlayer(args[0]);
-        if (sender instanceof Player && args.length == 1 && !((Player) sender).getDisplayName().equals(args[0]) && receiver != null) {
+        if (sender instanceof Player && args.length == 1) {
             santa = (Player) sender;
+            receiver = Bukkit.getPlayer(args[0]);
 
             currentSantas.put(santa, receiver);
 

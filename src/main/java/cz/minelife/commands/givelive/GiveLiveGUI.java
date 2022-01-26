@@ -16,7 +16,6 @@ public class GiveLiveGUI implements Listener {
     protected Yaml yaml;
     protected Player santa;
     protected Player receiver;
-    protected HashMap<Integer, ItemStack> items = new HashMap<>();
 
     public GiveLiveGUI(Player santa, Player receiver, Yaml yaml) {
         this.santa = santa;
@@ -37,6 +36,10 @@ public class GiveLiveGUI implements Listener {
     }
 
     public void openInventory() {
+        if (santa == receiver || receiver == null) {
+            santa.sendMessage("§cError");
+            return;
+        }
         santa.openInventory(inv);
     }
 }
