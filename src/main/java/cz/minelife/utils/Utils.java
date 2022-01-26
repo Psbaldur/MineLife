@@ -1,10 +1,10 @@
 package cz.minelife.utils;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Utils {
@@ -40,10 +40,9 @@ public class Utils {
         return RANDOM.nextInt(max - min) + min;
     }
 
-    public static Player randomPlayer() {
-        Player[] players = Bukkit.getOnlinePlayers().toArray(new Player[0]);
-        int randomNumberInRange = RANDOM.nextInt(players.length);
+    public static Player randomPlayer(ArrayList<Player> playersArray) {
+        int randomNumberInRange = RANDOM.nextInt(playersArray.size());
 
-        return players[randomNumberInRange];
+        return playersArray.get(randomNumberInRange);
     }
 }

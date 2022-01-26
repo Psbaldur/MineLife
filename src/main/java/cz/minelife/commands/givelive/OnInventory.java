@@ -3,7 +3,6 @@ package cz.minelife.commands.givelive;
 import cz.minelife.Main;
 import cz.minelife.dtb.Yaml;
 import cz.minelife.teams.ETeams;
-import org.bukkit.Bukkit;
 import org.bukkit.EntityEffect;
 import org.bukkit.Sound;
 import org.bukkit.enchantments.Enchantment;
