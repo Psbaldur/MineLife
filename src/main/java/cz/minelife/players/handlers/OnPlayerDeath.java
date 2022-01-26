@@ -44,6 +44,7 @@ public class OnPlayerDeath implements Listener {
                 p.setGameMode(GameMode.SPECTATOR);
                 playerTeam.removePlayer(p);
                 p.sendMessage(ChatColor.RED + "Právě jsi zemřel. Doufám, že už tě nikdo neoživí...");
+                livesActionBar.replace(p, "§40 ŽIVOTŮ");
                 break;
             case 1:
                 ONELIVE.getTeam().addEntry(p.getDisplayName());

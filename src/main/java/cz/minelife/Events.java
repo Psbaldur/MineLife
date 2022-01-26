@@ -21,6 +21,6 @@ public class Events {
         new ActionBar(main);
 
         //onPlayerJoin
-        main.getServer().getPluginManager().registerEvents(new OnPlayerJoin(), main);
+        main.getServer().getPluginManager().registerEvents(new OnPlayerJoin(main), main);
     }
 }

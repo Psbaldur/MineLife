@@ -2,6 +2,7 @@ package cz.minelife.players;
 
 import cz.minelife.Main;
 import cz.minelife.dtb.Yaml;
+import cz.minelife.teams.ETeams;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -12,7 +13,9 @@ import org.bukkit.scoreboard.Team;
 
 import java.util.HashMap;
 
+import static cz.minelife.actionbar.ActionBar.livesActionBar;
 import static cz.minelife.teams.ETeams.*;
+import static cz.minelife.teams.TeamUtil.getPlayerTeam;
 
 
 public class Players {
@@ -56,29 +59,35 @@ public class Players {
 
     public void addPlayersToTeams() {
         for (Player p: Bukkit.getOnlinePlayers()) {
-            Team playerTeam = p.getScoreboard().getEntryTeam(p.getDisplayName());
+            ETeams playerTeam = getPlayerTeam(p);
 
             if (playerTeam != null)
-                playerTeam.removeEntry(p.getDisplayName());
+                playerTeam.removePlayer(p);
 
             switch (lives.get(p)) {
                 case 1:
                     ONELIVE.setTeam(p);
+                    livesActionBar.put(p, "§41 ŽIVOT");
                     break;
                 case 2:
                     TWOLIVES.setTeam(p);
+                    livesActionBar.put(p, "§c2 ŽIVOTY");
                     break;
                 case 3:
                     THREELIVES.setTeam(p);
+                    livesActionBar.put(p, "§63 ŽIVOTY");
                     break;
                 case 4:
                     FOURLIVES.setTeam(p);
+                    livesActionBar.put(p, "§a4 ŽIVOTY");
                     break;
                 case 5:
                     FIVELIVES.setTeam(p);
+                    livesActionBar.put(p, "§25 ŽIVOTŮ");
                     break;
                 case 6:
                     SIXLIVES.setTeam(p);
+                    livesActionBar.put(p, "§26 ŽIVOTŮ");
                     break;
             }
         }

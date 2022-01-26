@@ -13,25 +13,22 @@ public class TeamUtil {
 
     public static ETeams getPlayerTeam(Player p) {
         Team team = scoreboard.getEntryTeam(p.getDisplayName());
-        if (team != null) {
-            switch (team.getDisplayName()) {
-                case "oneLive":
-                    return ONELIVE;
-                case "twoLives":
-                    return TWOLIVES;
-                case "threeLives":
-                    return THREELIVES;
-                case "fourLives":
-                    return FOURLIVES;
-                case "fiveLives":
-                    return FIVELIVES;
-                case "sixLives":
-                    return SIXLIVES;
-                default:
-                    return null;
+        switch (team.getDisplayName()) {
+            case "oneLive":
+                return ONELIVE;
+            case "twoLives":
+                return TWOLIVES;
+            case "threeLives":
+                return THREELIVES;
+            case "fourLives":
+                return FOURLIVES;
+            case "fiveLives":
+                return FIVELIVES;
+            case "sixLives":
+                return SIXLIVES;
+            default:
+                return null;
             }
-        }
-        return null;
     }
 
     public static ETeams getTeamByLiveCount(int liveCount) {

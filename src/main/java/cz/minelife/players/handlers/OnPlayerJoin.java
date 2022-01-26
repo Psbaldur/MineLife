@@ -1,43 +1,51 @@
 package cz.minelife.players.handlers;
 
+import cz.minelife.Main;
 import cz.minelife.teams.ETeams;
-import org.bukkit.ChatColor;
-import org.bukkit.GameMode;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import static cz.minelife.actionbar.ActionBar.livesActionBar;
-import static cz.minelife.teams.ETeams.*;
 import static cz.minelife.teams.TeamUtil.getPlayerTeam;
 
 public class OnPlayerJoin implements Listener {
-    public void OnPlayerJoin(PlayerJoinEvent event) {
+    private Main plugin;
+
+    public OnPlayerJoin(Main plugin) {
+        this.plugin = plugin;
+    }
+
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent event) {
         Player p = event.getPlayer();
 
         ETeams team = getPlayerTeam(p);
 
         switch (team) {
             case ONELIVE:
-                livesActionBar.putIfAbsent(p, "§41 ŽIVOT");
+                livesActionBar.put(p, "§41 ŽIVOT");
                 break;
             case TWOLIVES:
-                livesActionBar.putIfAbsent(p, "§c2 ŽIVOTY");
+                livesActionBar.put(p, "§c2 ŽIVOTY");
                 break;
             case THREELIVES:
-                livesActionBar.putIfAbsent(p, "§63 ŽIVOTY");
+                livesActionBar.put(p, "§63 ŽIVOTY");
                 break;
             case FOURLIVES:
-                livesActionBar.putIfAbsent(p, "§a4 ŽIVOTY");
+                livesActionBar.put(p, "§a4 ŽIVOTY");
                 break;
             case FIVELIVES:
-                livesActionBar.putIfAbsent(p, "§25 ŽIVOTŮ");
+                livesActionBar.put(p, "§25 ŽIVOTŮ");
                 break;
             case SIXLIVES:
-                livesActionBar.putIfAbsent(p, "§26 ŽIVOTŮ");
+                livesActionBar.put(p, "§26 ŽIVOTŮ");
                 break;
             default:
-                livesActionBar.putIfAbsent(p, "§cNULL");
+                livesActionBar.put(p, "§cNULL");
         }
     }
 }
