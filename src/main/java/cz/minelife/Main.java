@@ -1,14 +1,11 @@
 package cz.minelife;
 
-import cz.minelife.commands.givelive.GiveLiveGUI;
-import cz.minelife.players.Players;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
-        saveDefaultConfig();
 
         new Commands(this);
         new Events(this);

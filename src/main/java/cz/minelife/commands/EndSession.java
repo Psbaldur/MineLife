@@ -1,37 +1,35 @@
 package cz.minelife.commands;
 
 import cz.minelife.Main;
-import cz.minelife.dtb.Yaml;
+import cz.minelife.dtb.BoogeyDB;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import static cz.minelife.teams.ETeams.ONELIVE;
+import static cz.minelife.teams.TeamUtil.setPlayerLives;
 
 public class EndSession implements CommandExecutor {
     private Main plugin;
-    private Yaml yaml;
+    private BoogeyDB boogeyDB;
 
     public EndSession(Main plugin) {
         this.plugin = plugin;
-        this.yaml = new Yaml(plugin);
+        this.boogeyDB = new BoogeyDB();
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender.isOp()) {
-            if (yaml.getBoogeyman() != null && !yaml.getIfIsBoogeyCured()) {
-                String boogeyman = yaml.getBoogeyman();
-                Player boogey = Bukkit.getPlayer(boogeyman);
+            if (boogeyDB.getBoogeyman() != null && !boogeyDB.getIfIsBoogeyCured()) {
+                Player boogey = boogeyDB.getBoogeyman();
 
-                plugin.getServer().broadcastMessage("§c§lBohužel " + boogeyman + " nepřekonal své Prokletí Babicí a tak mu byly strženy životy na 1. \n\nServer se uzavře za 5 minut");
+                plugin.getServer().broadcastMessage("§c§lBohužel " + boogey.getDisplayName() + " nepřekonal své Prokletí Babicí a tak mu byly strženy životy na 1. \n\nServer se uzavře za 5 minut");
 
-                ONELIVE.setTeam(boogey);
+                setPlayerLives(boogey, 1);
 
                 boogey.kickPlayer("§c§lVe tvém vlastním zájmu se již nenapojuj jinak budeš muset čelit všemu s jedním životem :)");
             } else {

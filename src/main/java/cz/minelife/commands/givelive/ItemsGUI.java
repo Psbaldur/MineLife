@@ -5,7 +5,7 @@ import org.bukkit.inventory.ItemStack;
 
 import static cz.minelife.utils.Items.createItem;
 
-public enum Items {
+public enum ItemsGUI {
     CANCEL (Material.RED_WOOL, 1, "§cZrušit", "§7Kliknutím na toto zrušíš dávání životu"),
     ONE (Material.GRAY_WOOL, 1, "§l1", "§7Kliknutím na toto dáš danému hráči jeden život"),
     TWO (Material.GRAY_WOOL, 2, "§l2", "§7Kliknutím na toto dáš danému hráči dva životy"),
@@ -16,7 +16,7 @@ public enum Items {
     private final String name;
     private final String lore;
 
-    Items(Material material, int amount, String name, String lore) {
+    ItemsGUI(Material material, int amount, String name, String lore) {
         this.material = material;
         this.amount = amount;
         this.name = name;

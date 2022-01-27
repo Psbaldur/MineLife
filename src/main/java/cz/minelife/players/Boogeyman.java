@@ -1,7 +1,7 @@
 package cz.minelife.players;
 
 import cz.minelife.Main;
-import cz.minelife.dtb.Yaml;
+import cz.minelife.dtb.BoogeyDB;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
@@ -17,11 +17,11 @@ import static cz.minelife.utils.Utils.setTitle;
 
 public class Boogeyman {
     private Main plugin;
-    private Yaml yaml;
+    private BoogeyDB boogeyDB;
 
     public Boogeyman(Main plugin) {
         this.plugin = plugin;
-        this.yaml = new Yaml(plugin);
+        this.boogeyDB = new BoogeyDB();
     }
 
     public void choose() {
@@ -38,7 +38,7 @@ public class Boogeyman {
                 setTitle(p, "&cBYL JSI PROKLET BABICÍ", "");
                 p.playSound(p.getLocation(), Sound.ENTITY_WITHER_DEATH, 1f, 1f);
                 p.sendMessage(ChatColor.RED + "Byl jsi proklet Babicí. Odteď do konce dnešního sezení musíš zabít jednoho hráče, aby jsi se vyléčil. V případě, že hráče nezabiješ stihne tě trest a to taký, že příště budeš mít pouze 1 život.");
-                yaml.setBoogeyman(p);
+                boogeyDB.setBoogeyman(p);
 
                 Bukkit.broadcastMessage("§cVšemocná čarodějnice Babice se rozmáchla a jednoho z nás proklela. Dávejte si na něj pozor!");
             }

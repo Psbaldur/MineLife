@@ -1,7 +1,5 @@
 package cz.minelife.commands.givelive;
 
-import cz.minelife.Main;
-import cz.minelife.dtb.Yaml;
 import cz.minelife.teams.ETeams;
 import org.bukkit.EntityEffect;
 import org.bukkit.Sound;
@@ -17,16 +15,10 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import static cz.minelife.commands.givelive.GiveLive.currentSantas;
-import static cz.minelife.teams.TeamUtil.getPlayerTeam;
-import static cz.minelife.teams.TeamUtil.getTeamByLiveCount;
+import static cz.minelife.teams.TeamUtil.*;
 
 public class OnInventory implements Listener {
     private int livesToGive;
-    private Yaml yaml;
-
-    public OnInventory(Main plugin) {
-        this.yaml = new Yaml(plugin);
-    }
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
@@ -109,8 +101,8 @@ public class OnInventory implements Listener {
         receiver.playEffect(EntityEffect.TOTEM_RESURRECT);
         santa.playSound(receiver.getLocation(), Sound.ITEM_TOTEM_USE, 1, 1);
 
-        getTeamByLiveCount(santaLives).setTeam(santa);
-        getTeamByLiveCount(receiverLives).setTeam(receiver);
+        setPlayerLives(santa, santaLives);
+        setPlayerLives(receiver, receiverLives);
 
         livesToGive = 0;
     }

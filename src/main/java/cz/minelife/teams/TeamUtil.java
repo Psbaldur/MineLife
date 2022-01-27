@@ -1,5 +1,6 @@
 package cz.minelife.teams;
 
+import cz.minelife.events.ChangeLivesEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
@@ -47,5 +48,32 @@ public class TeamUtil {
                 return SIXLIVES;
         }
         return null;
+    }
+
+    public static void setPlayerLives(Player p, int liveCount) {
+        ChangeLivesEvent changeLivesEvent = new ChangeLivesEvent(p, liveCount);
+
+        Bukkit.getPluginManager().callEvent(changeLivesEvent);
+
+        if (!changeLivesEvent.isCancelled()) {
+            switch (liveCount) {
+                case 1:
+                    ONELIVE.setTeam(p);
+                case 2:
+                    TWOLIVES.setTeam(p);
+                case 3:
+                    THREELIVES.setTeam(p);
+                case 4:
+                    FOURLIVES.setTeam(p);
+                case 5:
+                    FIVELIVES.setTeam(p);
+                case 6:
+                    SIXLIVES.setTeam(p);
+            }
+        }
+    }
+
+    public static int getPlayerLives(Player p) {
+        return getPlayerTeam(p).getIntLives();
     }
 }

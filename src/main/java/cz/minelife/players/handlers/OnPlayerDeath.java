@@ -1,7 +1,7 @@
 package cz.minelife.players.handlers;
 
 import cz.minelife.Main;
-import cz.minelife.dtb.Yaml;
+import cz.minelife.dtb.BoogeyDB;
 import cz.minelife.teams.ETeams;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -17,11 +17,11 @@ import static cz.minelife.teams.TeamUtil.getPlayerTeam;
 
 public class OnPlayerDeath implements Listener {
     private Main plugin;
-    private Yaml yaml;
+    private BoogeyDB boogeyDB;
 
     public OnPlayerDeath(Main plugin) {
         this.plugin = plugin;
-        yaml = new Yaml(plugin);
+        boogeyDB = new BoogeyDB();
     }
 
     @EventHandler
@@ -30,11 +30,11 @@ public class OnPlayerDeath implements Listener {
         ETeams playerTeam = getPlayerTeam(p);
         int playerLives = playerTeam.getIntLives() - 1;
 
-        if (p.getKiller() != null && p.getKiller().getDisplayName().equals(yaml.getBoogeyman()) && !yaml.getIfIsBoogeyCured()) {
+        if (p.getKiller() == boogeyDB.getBoogeyman() && !boogeyDB.getIfIsBoogeyCured()) {
             p.getKiller().sendMessage("§aProlomil jsi prokletí! Babice bude trochu naštvaná...");
             p.playSound(p.getLocation() , Sound.ENTITY_ENDER_DRAGON_DEATH, 1, 1);
             p.getWorld().strikeLightningEffect(p.getLocation());
-            yaml.setIfIsBoogeymanCured(true);
+            boogeyDB.setIfIsBoogeymanCured(true);
         }
 
         switch (playerLives) {
