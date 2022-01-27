@@ -16,3 +16,6 @@ commands:
   givelive:
     description: Možnost dát život jinému hráči
     usage: /givelive [nick_hráče]
+  item:
+    description: Dá ti předmět dle tvého výběru
+    usage: /item [item]

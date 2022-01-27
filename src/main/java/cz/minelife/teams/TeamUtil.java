@@ -2,6 +2,7 @@ package cz.minelife.teams;
 
 import cz.minelife.events.ChangeLivesEvent;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
@@ -56,24 +57,38 @@ public class TeamUtil {
         Bukkit.getPluginManager().callEvent(changeLivesEvent);
 
         if (!changeLivesEvent.isCancelled()) {
-            switch (liveCount) {
-                case 1:
-                    ONELIVE.setTeam(p);
-                case 2:
-                    TWOLIVES.setTeam(p);
-                case 3:
-                    THREELIVES.setTeam(p);
-                case 4:
-                    FOURLIVES.setTeam(p);
-                case 5:
-                    FIVELIVES.setTeam(p);
-                case 6:
-                    SIXLIVES.setTeam(p);
-            }
+            getTeamByLiveCount(liveCount).setTeam(p);
         }
     }
 
     public static int getPlayerLives(Player p) {
         return getPlayerTeam(p).getIntLives();
+    }
+
+    public static void setupTeams() {
+        Team oneLive;
+        Team twoLives;
+        Team threeLives;
+        Team fourLives;
+        Team fiveLives;
+        Team sixLives;
+
+        for (Team t: scoreboard.getTeams()) {
+            t.unregister();
+        }
+
+        oneLive = scoreboard.registerNewTeam("oneLive");
+        twoLives = scoreboard.registerNewTeam("twoLives");
+        threeLives = scoreboard.registerNewTeam("threeLives");
+        fourLives = scoreboard.registerNewTeam("fourLives");
+        fiveLives = scoreboard.registerNewTeam("fiveLives");
+        sixLives = scoreboard.registerNewTeam("sixLives");
+
+        oneLive.setColor(ChatColor.DARK_RED);
+        twoLives.setColor(ChatColor.RED);
+        threeLives.setColor(ChatColor.GOLD);
+        fourLives.setColor(ChatColor.GREEN);
+        fiveLives.setColor(ChatColor.DARK_GREEN);
+        sixLives.setColor(ChatColor.DARK_GREEN);
     }
 }

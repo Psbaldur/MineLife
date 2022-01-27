@@ -90,6 +90,11 @@ public class OnInventory implements Listener {
         ETeams receiverTeam = getPlayerTeam(receiver);
         ETeams santaTeam = getPlayerTeam(santa);
 
+        if (receiverTeam == null || santaTeam == null) {
+            santa.sendMessage("§cError");
+            return;
+        }
+
         int receiverLives = receiverTeam.getIntLives() + livesToGive;
         int santaLives = santaTeam.getIntLives() - livesToGive;
 

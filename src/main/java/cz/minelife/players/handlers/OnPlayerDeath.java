@@ -30,7 +30,7 @@ public class OnPlayerDeath implements Listener {
         ETeams playerTeam = getPlayerTeam(p);
         int playerLives = playerTeam.getIntLives() - 1;
 
-        if (p.getKiller() == boogeyDB.getBoogeyman() && !boogeyDB.getIfIsBoogeyCured()) {
+        if (p.getKiller() != null && p.getKiller() == boogeyDB.getBoogeyman() && !boogeyDB.getIfIsBoogeyCured()) {
             p.getKiller().sendMessage("§aProlomil jsi prokletí! Babice bude trochu naštvaná...");
             p.playSound(p.getLocation() , Sound.ENTITY_ENDER_DRAGON_DEATH, 1, 1);
             p.getWorld().strikeLightningEffect(p.getLocation());
