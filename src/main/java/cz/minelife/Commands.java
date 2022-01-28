@@ -5,6 +5,7 @@ import cz.minelife.commands.ItemCmd;
 import cz.minelife.commands.givelive.GiveLive;
 import cz.minelife.commands.SetupCmd;
 import cz.minelife.commands.StartSession;
+import cz.minelife.items.Craftings;
 
 public class Commands {
     public Commands(Main main) {
@@ -22,5 +23,6 @@ public class Commands {
 
         //ITEM
         main.getCommand("item").setExecutor(new ItemCmd());
+        new Craftings(main);
     }
 }

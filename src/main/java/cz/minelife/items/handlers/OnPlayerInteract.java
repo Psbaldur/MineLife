@@ -16,7 +16,7 @@ public class OnPlayerInteract implements Listener {
     public void onPlayerInteract(PlayerInteractEvent e) {
         Player p = e.getPlayer();
 
-        if (e.getItem() == null) {
+        if (e.getItem() == null || !e.getItem().getItemMeta().hasCustomModelData()) {
             return;
         }
 
