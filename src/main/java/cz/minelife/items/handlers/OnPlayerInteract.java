@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 import static cz.minelife.items.Items.ONELIVE_STICK;
@@ -16,7 +17,7 @@ public class OnPlayerInteract implements Listener {
     public void onPlayerInteract(PlayerInteractEvent e) {
         Player p = e.getPlayer();
 
-        if (e.getItem() == null || !e.getItem().getItemMeta().hasCustomModelData()) {
+        if (e.getItem() == null || !e.getItem().getItemMeta().hasCustomModelData() || e.getAction() == Action.PHYSICAL || e.getAction() == Action.LEFT_CLICK_AIR || e.getAction() == Action.LEFT_CLICK_BLOCK) {
             return;
         }
 
