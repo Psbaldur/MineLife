@@ -51,8 +51,12 @@ public class TeamUtil {
         return null;
     }
 
-    public static void setPlayerLives(Player p, int liveCount) {
-        ChangeLivesEvent changeLivesEvent = new ChangeLivesEvent(p, liveCount);
+    public static void setPlayerLives(Player p, int liveCount, boolean isFirstTime) {
+        ChangeLivesEvent changeLivesEvent;
+        if (isFirstTime)
+            changeLivesEvent = new ChangeLivesEvent(p, liveCount, null, true);
+        else
+            changeLivesEvent = new ChangeLivesEvent(p, getPlayerLives(p), liveCount, false);
 
         Bukkit.getPluginManager().callEvent(changeLivesEvent);
 

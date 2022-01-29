@@ -106,8 +106,8 @@ public class OnInventory implements Listener {
         receiver.playEffect(EntityEffect.TOTEM_RESURRECT);
         santa.playSound(receiver.getLocation(), Sound.ITEM_TOTEM_USE, 1, 1);
 
-        setPlayerLives(santa, santaLives);
-        setPlayerLives(receiver, receiverLives);
+        setPlayerLives(santa, santaLives, true);
+        setPlayerLives(receiver, receiverLives, true);
 
         livesToGive = 0;
     }

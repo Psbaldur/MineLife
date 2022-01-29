@@ -12,15 +12,14 @@ public class Boss {
     private Witch witch = (Witch) Bukkit.getWorld("world").spawnEntity(spawnPoint, EntityType.WITCH);
 
     public Boss() {
-        witch.setCustomName("§cMOCNÁ BABICE");
+        witch.setCustomName("§c§lMOCNÁ BABICE");
         witch.setCustomNameVisible(true);
         witch.setGlowing(true);
         witch.setHealth(26);
-        witch.setLootTable(new BossLootTable());
-        witch.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 1000000, 4));
-        witch.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 1000000, 4));
-        witch.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, 1000000, 50));
+        witch.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 1000000, 2));
+        witch.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 1000000, 2));
+        witch.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, 1000000, 25));
 
-        Bukkit.getLogger().info("SPAWNUTO");
+        Bukkit.broadcastMessage("§cBuďte na pozoru! Objevila se tu Babice");
     }
 }

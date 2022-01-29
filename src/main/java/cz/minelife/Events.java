@@ -2,6 +2,7 @@ package cz.minelife;
 
 import cz.minelife.actionbar.ActionBar;
 import cz.minelife.actionbar.OnChangeLives;
+import cz.minelife.boss.OnChangeLivesBoss;
 import cz.minelife.commands.givelive.OnInventory;
 import cz.minelife.items.handlers.OnPlayerInteract;
 import cz.minelife.players.handlers.OnPlayerDeath;
@@ -29,8 +30,10 @@ public class Events {
 
         //onChangeLives
         main.getServer().getPluginManager().registerEvents(new OnChangeLives(), main);
+        main.getServer().getPluginManager().registerEvents(new OnChangeLivesBoss(), main);
 
         //onPlayerInteract
         main.getServer().getPluginManager().registerEvents(new OnPlayerInteract(), main);
+
     }
 }

@@ -42,7 +42,7 @@ public class SetupCmd implements CommandExecutor {
                                 for (Player p : Bukkit.getOnlinePlayers()) {
                                     int random = Utils.randomInt(6, 2);
 
-                                    setPlayerLives(p, random);
+                                    setPlayerLives(p, random, true);
                                     setTitle(p, random, Sound.ENTITY_PLAYER_LEVELUP);
                                 }
                                 this.cancel();

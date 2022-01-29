@@ -27,7 +27,7 @@ public class EndSession implements CommandExecutor {
 
                 main.getServer().broadcastMessage("§c§lBohužel " + boogey.getDisplayName() + " nepřekonal své Prokletí Babicí a tak mu byly strženy životy na 1. \n\nServer se uzavře za 5 minut");
 
-                setPlayerLives(boogey, 1);
+                setPlayerLives(boogey, 1, false);
 
                 boogey.kickPlayer("§c§lVe tvém vlastním zájmu se již nenapojuj jinak budeš muset čelit všemu s jedním životem :)");
             } else {
