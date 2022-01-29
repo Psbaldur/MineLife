@@ -1,6 +1,5 @@
 package cz.minelife.players.handlers;
 
-import cz.minelife.Main;
 import cz.minelife.dtb.BoogeyDB;
 import cz.minelife.teams.ETeams;
 import org.bukkit.ChatColor;
@@ -16,11 +15,9 @@ import static cz.minelife.teams.ETeams.*;
 import static cz.minelife.teams.TeamUtil.getPlayerTeam;
 
 public class OnPlayerDeath implements Listener {
-    private Main plugin;
     private BoogeyDB boogeyDB;
 
-    public OnPlayerDeath(Main plugin) {
-        this.plugin = plugin;
+    public OnPlayerDeath() {
         boogeyDB = new BoogeyDB();
     }
 

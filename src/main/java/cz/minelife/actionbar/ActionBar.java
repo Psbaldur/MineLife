@@ -1,6 +1,5 @@
 package cz.minelife.actionbar;
 
-import cz.minelife.Main;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
@@ -9,10 +8,12 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.HashMap;
 
+import static cz.minelife.Main.main;
+
 public class ActionBar {
     public static HashMap<Player, String> livesActionBar = new HashMap<>();
 
-    public ActionBar(Main plugin) {
+    public ActionBar() {
         new BukkitRunnable() {
             @Override
             public void run() {
@@ -25,6 +26,6 @@ public class ActionBar {
                     }
                 }
             }
-        }.runTaskTimer(plugin, 0L, 16);
+        }.runTaskTimer(main, 0L, 16);
     }
 }

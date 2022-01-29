@@ -8,10 +8,12 @@ import cz.minelife.players.handlers.OnPlayerDeath;
 import cz.minelife.players.handlers.OnPlayerChat;
 import cz.minelife.players.handlers.OnPlayerJoin;
 
+import static cz.minelife.Main.main;
+
 public class Events {
-    public Events(Main main) {
+    public Events() {
         //onDeath Listener
-        main.getServer().getPluginManager().registerEvents(new OnPlayerDeath(main), main);
+        main.getServer().getPluginManager().registerEvents(new OnPlayerDeath(), main);
 
         //onPlayerChat Listener
         main.getServer().getPluginManager().registerEvents(new OnPlayerChat(), main);
@@ -20,10 +22,10 @@ public class Events {
         main.getServer().getPluginManager().registerEvents(new OnInventory(), main);
 
         //ActionBar
-        new ActionBar(main);
+        new ActionBar();
 
         //onPlayerJoin
-        main.getServer().getPluginManager().registerEvents(new OnPlayerJoin(main), main);
+        main.getServer().getPluginManager().registerEvents(new OnPlayerJoin(), main);
 
         //onChangeLives
         main.getServer().getPluginManager().registerEvents(new OnChangeLives(), main);

@@ -1,6 +1,5 @@
 package cz.minelife.commands;
 
-import cz.minelife.Main;
 import cz.minelife.players.Boogeyman;
 import cz.minelife.utils.Utils;
 import org.bukkit.Bukkit;
@@ -11,19 +10,13 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import static cz.minelife.Main.main;
 import static cz.minelife.teams.TeamUtil.setPlayerLives;
 import static cz.minelife.teams.TeamUtil.setupTeams;
 import static cz.minelife.utils.Utils.randomInt;
 import static cz.minelife.utils.Utils.setTitle;
 
 public class SetupCmd implements CommandExecutor {
-    private int counter = 0;
-    private Main plugin;
-
-    public SetupCmd(Main plugin) {
-        this.plugin = plugin;
-    }
-
     private void startDrawingLives() {
         new BukkitRunnable() {
             int i = 0;
@@ -53,16 +46,16 @@ public class SetupCmd implements CommandExecutor {
                                     setTitle(p, random, Sound.ENTITY_PLAYER_LEVELUP);
                                 }
                                 this.cancel();
-                                new Boogeyman(plugin).choose();
+                                new Boogeyman().choose();
                             }
                             i++;
                         }
-                    }.runTaskTimer(plugin, 2L, 8L);
+                    }.runTaskTimer(main, 2L, 8L);
                     this.cancel();
                 }
                 i++;
             }
-        }.runTaskTimer(plugin, 0L, 2L);
+        }.runTaskTimer(main, 0L, 2L);
     }
 
     @Override

@@ -1,6 +1,5 @@
 package cz.minelife.players;
 
-import cz.minelife.Main;
 import cz.minelife.dtb.BoogeyDB;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -10,17 +9,16 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 
+import static cz.minelife.Main.main;
 import static cz.minelife.teams.ETeams.ONELIVE;
 import static cz.minelife.teams.TeamUtil.getPlayerTeam;
 import static cz.minelife.utils.Utils.randomPlayer;
 import static cz.minelife.utils.Utils.setTitle;
 
 public class Boogeyman {
-    private Main plugin;
     private BoogeyDB boogeyDB;
 
-    public Boogeyman(Main plugin) {
-        this.plugin = plugin;
+    public Boogeyman() {
         this.boogeyDB = new BoogeyDB();
     }
 
@@ -42,6 +40,6 @@ public class Boogeyman {
 
                 Bukkit.broadcastMessage("§cVšemocná čarodějnice Babice se rozmáchla a jednoho z nás proklela. Dávejte si na něj pozor!");
             }
-        }.runTaskLater(plugin, 20*15);
+        }.runTaskLater(main, 20*15);
     }
 }
