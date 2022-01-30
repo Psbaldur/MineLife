@@ -10,7 +10,8 @@ import java.util.Arrays;
 
 public enum Items {
     ONELIVE_STICK (Material.STICK, 1234567, Enchantment.WATER_WORKER, "§aKlacek Mistra stvořitele", "§7Svádí tě to k mávnutí s tím ve vzduchu"),
-    TWOLIVES_STICK (Material.BLAZE_ROD, 7654321, Enchantment.WATER_WORKER, "§aHůlka života", "§7Je z toho cítit hodně energie");
+    TWOLIVES_STICK (Material.BLAZE_ROD, 7654321, Enchantment.WATER_WORKER, "§aHůlka života", "§7Je z toho cítit hodně energie"),
+    BREAK_CURSE (Material.SUGAR, 1254557, Enchantment.WATER_WORKER, "§aČarodějný kámen mocné Babice", "§7Jakmile ho držíš v ruce, máš takový divný pocit síly.", "§7Bouchnutím jiného hráče ho zbavíš prokletí!");
 
     private ItemStack item;
 

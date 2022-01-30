@@ -3,6 +3,7 @@ package cz.minelife;
 import cz.minelife.actionbar.ActionBar;
 import cz.minelife.actionbar.OnChangeLives;
 import cz.minelife.boss.OnChangeLivesBoss;
+import cz.minelife.boss.OnEntityDeath;
 import cz.minelife.commands.givelive.OnInventory;
 import cz.minelife.items.handlers.OnPlayerInteract;
 import cz.minelife.players.handlers.OnPlayerDeath;
@@ -34,6 +35,9 @@ public class Events {
 
         //onPlayerInteract
         main.getServer().getPluginManager().registerEvents(new OnPlayerInteract(), main);
+
+        //onEntityDeath
+        main.getServer().getPluginManager().registerEvents(new OnEntityDeath(), main);
 
     }
 }

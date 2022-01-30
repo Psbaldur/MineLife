@@ -6,8 +6,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import static cz.minelife.items.Items.ONELIVE_STICK;
-import static cz.minelife.items.Items.TWOLIVES_STICK;
+import static cz.minelife.items.Items.*;
 
 public class ItemCmd implements CommandExecutor {
     @Override
@@ -21,8 +20,12 @@ public class ItemCmd implements CommandExecutor {
                 p.getInventory().addItem(ONELIVE_STICK.getItem());
                 p.sendMessage("§7PŘEDMĚT BYL VYDÁN!");
                 return true;
-            } else if (args[0].equalsIgnoreCase("twolives_stick")) {
+            } if (args[0].equalsIgnoreCase("twolives_stick")) {
                 p.getInventory().addItem(TWOLIVES_STICK.getItem());
+                p.sendMessage("§7PŘEDMĚT BYL VYDÁN!");
+                return true;
+            } if (args[0].equalsIgnoreCase("break_curse")) {
+                p.getInventory().addItem(BREAK_CURSE.getItem());
                 p.sendMessage("§7PŘEDMĚT BYL VYDÁN!");
                 return true;
             }
