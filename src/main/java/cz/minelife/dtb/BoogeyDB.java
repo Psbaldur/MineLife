@@ -11,8 +11,8 @@ public class BoogeyDB {
         isCured = false;
     }
 
-    public void setBoogeyman(Player p) {
-        boogeyman = p;
+    public void setBoogeyman(Player player) {
+        boogeyman = player;
         isCured = false;
     }
 

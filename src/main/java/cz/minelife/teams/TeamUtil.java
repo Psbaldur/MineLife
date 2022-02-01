@@ -51,18 +51,27 @@ public class TeamUtil {
         return null;
     }
 
-    public static void setPlayerLives(Player p, int liveCount) {
-        ChangeLivesEvent changeLivesEvent = new ChangeLivesEvent(p, liveCount);
+    public static void setPlayerLives(Player p, int liveCount, boolean isFirstTime) {
+        ChangeLivesEvent changeLivesEvent;
+
+        changeLivesEvent = new ChangeLivesEvent(p, liveCount, getPlayerLives(p), false);
 
         Bukkit.getPluginManager().callEvent(changeLivesEvent);
 
         if (!changeLivesEvent.isCancelled()) {
-            getTeamByLiveCount(liveCount).setTeam(p);
+            ETeams team = getTeamByLiveCount(liveCount);
+            if (liveCount != 0)
+                team.setTeam(p);
+            else
+                team.removePlayer(p);
         }
     }
 
     public static int getPlayerLives(Player p) {
-        return getPlayerTeam(p).getIntLives();
+        if (getPlayerTeam(p) != null)
+            return getPlayerTeam(p).getIntLives();
+        else
+            return 0;
     }
 
     public static void setupTeams() {

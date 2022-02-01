@@ -1,6 +1,5 @@
 package cz.minelife.commands.givelive;
 
-import cz.minelife.Main;
 import cz.minelife.dtb.BoogeyDB;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -12,13 +11,11 @@ import java.util.HashMap;
 
 public class GiveLive implements CommandExecutor {
     public static HashMap<Player, Player> currentSantas = new HashMap<>();
-    private Main plugin;
     private BoogeyDB boogeyDB;
     private Player santa;
     private Player receiver;
 
-    public GiveLive(Main plugin) {
-        this.plugin = plugin;
+    public GiveLive() {
         this.boogeyDB = new BoogeyDB();
     }
 

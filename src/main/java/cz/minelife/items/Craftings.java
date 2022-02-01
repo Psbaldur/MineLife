@@ -1,20 +1,19 @@
 package cz.minelife.items;
 
-import cz.minelife.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 
+import static cz.minelife.Main.main;
 import static cz.minelife.items.Items.ONELIVE_STICK;
 
 public class Craftings {
     private ItemStack item = ONELIVE_STICK.getItem();
     private ShapedRecipe recipe;
-    private Main main;
 
-    public Craftings(Main main) {
+    public Craftings() {
         recipe = new ShapedRecipe(new NamespacedKey(main, "onelive_stick"), item);
 
         recipe.shape("GDG", "DSD", "GDG");

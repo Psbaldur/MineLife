@@ -1,24 +1,15 @@
 package cz.minelife.players.handlers;
 
-import cz.minelife.Main;
 import cz.minelife.teams.ETeams;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import static cz.minelife.actionbar.ActionBar.livesActionBar;
 import static cz.minelife.teams.TeamUtil.getPlayerTeam;
 
 public class OnPlayerJoin implements Listener {
-    private Main plugin;
-
-    public OnPlayerJoin(Main plugin) {
-        this.plugin = plugin;
-    }
-
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player p = event.getPlayer();

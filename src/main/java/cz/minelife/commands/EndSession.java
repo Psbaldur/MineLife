@@ -1,6 +1,5 @@
 package cz.minelife.commands;
 
-import cz.minelife.Main;
 import cz.minelife.dtb.BoogeyDB;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -10,14 +9,13 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import static cz.minelife.Main.main;
 import static cz.minelife.teams.TeamUtil.setPlayerLives;
 
 public class EndSession implements CommandExecutor {
-    private Main plugin;
     private BoogeyDB boogeyDB;
 
-    public EndSession(Main plugin) {
-        this.plugin = plugin;
+    public EndSession() {
         this.boogeyDB = new BoogeyDB();
     }
 
@@ -27,13 +25,13 @@ public class EndSession implements CommandExecutor {
             if (boogeyDB.getBoogeyman() != null && !boogeyDB.getIfIsBoogeyCured()) {
                 Player boogey = boogeyDB.getBoogeyman();
 
-                plugin.getServer().broadcastMessage("§c§lBohužel " + boogey.getDisplayName() + " nepřekonal své Prokletí Babicí a tak mu byly strženy životy na 1. \n\nServer se uzavře za 5 minut");
+                main.getServer().broadcastMessage("§c§lBohužel " + boogey.getDisplayName() + " nepřekonal své Prokletí Babicí a tak mu byly strženy životy na 1. \n\nServer se uzavře za 5 minut");
 
-                setPlayerLives(boogey, 1);
+                setPlayerLives(boogey, 1, false);
 
                 boogey.kickPlayer("§c§lVe tvém vlastním zájmu se již nenapojuj jinak budeš muset čelit všemu s jedním životem :)");
             } else {
-                plugin.getServer().broadcastMessage("§c§lServer se automaticky vypne za 5 minut!");
+                main.getServer().broadcastMessage("§c§lServer se automaticky vypne za 5 minut!");
             }
             new BukkitRunnable() {
 
@@ -42,7 +40,7 @@ public class EndSession implements CommandExecutor {
                     Bukkit.getServer().savePlayers();
                     Bukkit.getServer().shutdown();
                 }
-            }.runTaskLater(plugin, 20 * 300);
+            }.runTaskLater(main, 20 * 300);
         } else {
             sender.sendMessage(ChatColor.RED + "Err.");
         }
