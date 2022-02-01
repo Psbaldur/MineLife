@@ -10,9 +10,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
-import static cz.minelife.items.Items.BREAK_CURSE;
 import static cz.minelife.items.Items.TWOLIVES_STICK;
 
 public class OnEntityDeath implements Listener {
@@ -21,14 +19,10 @@ public class OnEntityDeath implements Listener {
         LivingEntity livingEntity = entityDeathEvent.getEntity();
         if (livingEntity.hasMetadata("CUSTOM_ID")) {
             Witch boss = (Witch) livingEntity;
-            final Random RANDOM = new Random();
 
             List<ItemStack> loot = new ArrayList<>();
 
-            loot.add(BREAK_CURSE.getItem());
-
-            if (RANDOM.nextBoolean())
-                loot.add(TWOLIVES_STICK.getItem());
+            loot.add(TWOLIVES_STICK.getItem());
             
             for (ItemStack item: loot) {
                 boss.getWorld().strikeLightningEffect(boss.getLocation());
