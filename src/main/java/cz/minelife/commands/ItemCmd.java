@@ -24,14 +24,9 @@ public class ItemCmd implements CommandExecutor {
                 p.getInventory().addItem(TWOLIVES_STICK.getItem());
                 p.sendMessage("§7PŘEDMĚT BYL VYDÁN!");
                 return true;
-            } if (args[0].equalsIgnoreCase("break_curse")) {
-                p.getInventory().addItem(BREAK_CURSE.getItem());
-                p.sendMessage("§7PŘEDMĚT BYL VYDÁN!");
-                return true;
             }
 
             sender.sendMessage("§cINVALID ITEM!");
-            return false;
         }
         return false;
     }
