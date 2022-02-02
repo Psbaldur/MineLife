@@ -29,7 +29,6 @@ public class OnEntityDeath implements Listener {
                     List<ItemStack> loot = new ArrayList<>();
 
                     loot.add(TWOLIVES_STICK.getItem());
-                    loot.add(TWOLIVES_STICK.getItem());
 
                     for (ItemStack item: loot) {
                         new BukkitRunnable() {
